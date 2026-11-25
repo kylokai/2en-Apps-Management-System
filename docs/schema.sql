@@ -1,7 +1,7 @@
--- =============================================================================
+﻿-- =============================================================================
 -- 2en Apps HR Management System
 -- Module: Staff Profile and Details
--- Database schema — MySQL 8.0
+-- Database schema â€” MySQL 8.0
 -- Version 1.0 | 18 November 2026
 --
 -- NOTES
@@ -15,10 +15,10 @@
 --  * audit_logs is append-only (enforced by triggers at the end of file).
 -- =============================================================================
 
-CREATE DATABASE IF NOT EXISTS hrms_core
+CREATE DATABASE IF NOT EXISTS hr_system
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
-USE hrms_core;
+USE hr_system;
 
 -- -----------------------------------------------------------------------------
 -- 0. Reset (UNCOMMENT ONLY ON A FRESH DEVELOPMENT DATABASE)
@@ -167,7 +167,7 @@ CREATE TABLE ref_statutory_rule (
   KEY idx_rule (rule_code, effective_from),
   KEY idx_region (region_rule_set)
 ) ENGINE=InnoDB;
--- Reference values only — verify with KWSP / PERKESO / LHDN before go-live.
+-- Reference values only â€” verify with KWSP / PERKESO / LHDN before go-live.
 INSERT INTO ref_statutory_rule (rule_code,rate_percent,wage_ceiling,age_condition,effective_from,source_ref) VALUES
   ('EPF_EMP',11.000,5000.00,NULL,'2025-01-01','EPF Act 1991 Third Schedule'),
   ('EPF_ER',13.000,5000.00,NULL,'2025-01-01','EPF Act 1991 Third Schedule'),
@@ -710,7 +710,7 @@ CREATE TABLE audit_logs (
   KEY idx_audit_record (table_name, record_id),
   KEY idx_audit_employee (employee_id),
   KEY idx_audit_created (created_at)
-) ENGINE=InnoDB COMMENT='Append-only audit trail — do not grant UPDATE/DELETE to application user';
+) ENGINE=InnoDB COMMENT='Append-only audit trail â€” do not grant UPDATE/DELETE to application user';
 
 -- =============================================================================
 -- 7. USEFUL VIEWS
@@ -749,7 +749,7 @@ JOIN user_accounts u ON u.id = cr.requested_by
 WHERE cr.status = 'Pending';
 
 -- =============================================================================
--- 8. TRIGGERS — PROTECT AUDIT INTEGRITY
+-- 8. TRIGGERS â€” PROTECT AUDIT INTEGRITY
 -- =============================================================================
 
 DELIMITER $$

@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2en Apps Sdn. Bhd. — Staff Profile &amp; Details | UI Mockup</title>
+<style>
+/* ============================================================
+   2en HR — Corporate & Trustworthy / Modern Minimalist
+   Primary: Royal Blue   Secondary: Silver White
+   ============================================================ */
+:root{
+  --royal-900:#12265E; --royal-800:#173A8A; --royal-700:#1E4BB8;
+  --royal-600:#2456C7; --royal-500:#3B73E8; --royal-100:#E9F0FF; --royal-50:#F3F7FF;
+  --silver-50:#F7F9FC; --silver-100:#F1F4F9; --silver-200:#E2E8F1; --silver-300:#CFD8E6;
+  --silver-400:#8D9AB0; --silver-500:#6B7891; --ink:#18243A; --white:#FFFFFF;
+  --success:#0E9F6E; --success-bg:#E8F8F2; --warning:#C97A0B; --warning-bg:#FFF5E5;
+  --danger:#D64550; --danger-bg:#FDECEE; --purple:#6D4BD8; --purple-bg:#F1EDFF;
+  --teal:#0E8C9C; --teal-bg:#E6F7F9; --shadow:0 1px 3px rgba(18,38,94,.06),0 6px 20px rgba(18,38,94,.04);
+  --radius:14px; --sidebar-bg:#13295B;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;background:var(--silver-50);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.muted{color:var(--silver-500)}
+.tiny{font-size:11px}
+.small{font-size:12px}
+b,strong{font-weight:700}
+
+/* ---------- Buttons & common ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--silver-200);background:var(--white);color:var(--ink);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:700;transition:.16s;white-space:nowrap}
+.btn:hover{background:var(--silver-100);border-color:var(--silver-300)}
+.btn-primary{background:var(--royal-600);border-color:var(--royal-600);color:#fff}
+.btn-primary:hover{background:var(--royal-700);border-color:var(--royal-700)}
+.btn-ghost{background:transparent;border-color:transparent;color:var(--royal-600)}
+.btn-ghost:hover{background:var(--royal-50)}
+.btn-sm{padding:7px 12px;font-size:12px;border-radius:8px}
+.btn-block{width:100%}
+.input,select.input,textarea.input{width:100%;padding:11px 13px;border:1px solid var(--silver-200);border-radius:10px;background:#fff;color:var(--ink);font-size:13px;outline:none;transition:.15s}
+.input:focus{border-color:var(--royal-500);box-shadow:0 0 0 3px var(--royal-100)}
+textarea.input{resize:vertical;min-height:84px}
+label.lbl{display:block;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--silver-500);margin-bottom:7px}
+.card{background:#fff;border:1px solid var(--silver-200);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.card-title{font-size:15px;font-weight:800;letter-spacing:-.2px}
+.card-sub{font-size:12px;color:var(--silver-500);margin-top:2px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800;white-space:nowrap}
+.pill.blue{background:var(--royal-100);color:var(--royal-700)}
+.pill.green{background:var(--success-bg);color:var(--success)}
+.pill.amber{background:var(--warning-bg);color:var(--warning)}
+.pill.red{background:var(--danger-bg);color:var(--danger)}
+.pill.purple{background:var(--purple-bg);color:var(--purple)}
+.pill.teal{background:var(--teal-bg);color:var(--teal)}
+.pill.silver{background:var(--silver-100);color:var(--silver-500)}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+.grid-2{display:grid;grid-template-columns:1.6fr 1fr;gap:18px}
+.grid-2-even{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1150px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-2,.grid-2-even{grid-template-columns:1fr}}
+@media(max-width:760px){.grid-3,.grid-4{grid-template-columns:1fr}}
+
+/* ---------- Avatars ---------- */
+.avatar{display:grid;place-items:center;border-radius:50%;background:var(--royal-100);color:var(--royal-700);font-weight:800;flex-shrink:0;letter-spacing:.3px}
+.avatar.sm{width:32px;height:32px;font-size:11px}
+.avatar.md{width:40px;height:40px;font-size:12px}
+.avatar.lg{width:56px;height:56px;font-size:16px;border:3px solid #fff;box-shadow:0 2px 8px rgba(18,38,94,.15)}
+.avatar.xl{width:96px;height:96px;font-size:28px;border:4px solid #fff;box-shadow:0 4px 16px rgba(18,38,94,.18)}
+.avatar.hr{background:#E5F6F0;color:var(--success)}
+.avatar.boss{background:#F0EBFF;color:var(--purple)}
+.avatar.intern{background:#FFF3E2;color:var(--warning)}
+.avatar.manager{background:var(--teal-bg);color:var(--teal)}
+
+/* ============================================================
+   LOGIN SCREEN
+   ============================================================ */
+.login-screen{display:flex;min-height:100vh;background:#fff}
+.login-brand{width:45%;min-width:380px;background:linear-gradient(155deg,var(--royal-900) 0%,var(--royal-800) 55%,var(--royal-600) 100%);color:#fff;padding:54px 52px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.login-brand:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:1px solid rgba(255,255,255,.09);top:-140px;right:-160px}
+.login-brand:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.035);bottom:-120px;left:-80px}
+.brand-row{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.brand-mark{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,#fff,#DCE7FF);color:var(--royal-800);display:grid;place-items:center;font-weight:900;font-size:17px;letter-spacing:-.5px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.brand-name{font-size:19px;font-weight:800;letter-spacing:.2px}
+.brand-sub{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:#B9C9F0;margin-top:2px}
+.login-pitch{margin-top:auto;margin-bottom:auto;position:relative;z-index:1;max-width:420px}
+.login-pitch h1{font-size:38px;line-height:1.18;margin:0 0 18px;letter-spacing:-1.1px;font-weight:800}
+.login-pitch p{font-size:14px;color:#C9D6F5;line-height:1.8;margin:0 0 32px}
+.pitch-list{display:flex;flex-direction:column;gap:16px}
+.pitch-item{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:#E4ECFF}
+.pitch-ico{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.13);display:grid;place-items:center;flex-shrink:0}
+.pitch-ico svg{width:15px;height:15px}
+.login-brand-foot{position:relative;z-index:1;font-size:11px;color:#9FB4E8;border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
+.login-form-wrap{flex:1;display:grid;place-items:center;padding:42px 32px;background:var(--silver-50)}
+.login-form{width:100%;max-width:430px}
+.login-eyebrow{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--royal-600);margin-bottom:8px}
+.login-form h2{font-size:27px;margin:0 0 6px;letter-spacing:-.6px}
+.login-form .lede{color:var(--silver-500);font-size:13px;margin:0 0 26px}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.role-card{border:1.5px solid var(--silver-200);background:#fff;border-radius:12px;padding:13px 12px;display:flex;gap:10px;align-items:center;text-align:left;transition:.16s}
+.role-card:hover{border-color:var(--royal-500);transform:translateY(-1px)}
+.role-card.selected{border-color:var(--royal-600);background:var(--royal-50);box-shadow:0 0 0 3px rgba(36,86,199,.09)}
+.role-card .ri{width:34px;height:34px;border-radius:9px;background:var(--royal-100);color:var(--royal-700);display:grid;place-items:center;flex-shrink:0}
+.role-card.hr .ri{background:#E5F6F0;color:var(--success)}
+.role-card.boss .ri{background:#F0EBFF;color:var(--purple)}
+.role-card.intern .ri{background:#FFF3E2;color:var(--warning)}
+.role-card .rt{font-size:13px;font-weight:800;display:block}
+.role-card .rd{font-size:10.5px;color:var(--silver-500);display:block;margin-top:1px}
+.field{margin-bottom:16px}
+.field-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.checkline{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--silver-500)}
+.checkline input{accent-color:var(--royal-600)}
+.link{color:var(--royal-600);font-weight:700;font-size:12px;text-decoration:none}
+.link:hover{text-decoration:underline}
+.login-error{color:var(--danger);font-size:12px;min-height:18px;margin-bottom:6px}
+.demo-note{margin-top:20px;padding:12px 14px;background:var(--royal-50);border:1px solid #D6E4FF;border-radius:10px;font-size:11.5px;color:var(--royal-700);line-height:1.6}
+.demo-accounts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.demo-acct{font:inherit;text-align:left;cursor:pointer;border:1px solid #D6E4FF;background:rgba(255,255,255,.72);border-radius:8px;padding:7px 9px;color:var(--royal-700)}
+.demo-acct:hover{background:#fff;border-color:var(--royal-500)}
+.demo-acct b{display:block;font-size:11px}
+.demo-acct small{display:block;font-size:10px;color:var(--silver-500);word-break:break-all}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+.app-shell{display:flex;min-height:100vh}
+/* Sidebar — solid royal blue with white text */
+.sidebar{width:252px;background:var(--sidebar-bg);border-right:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;flex-shrink:0;color:#fff}
+.brand-bar{height:72px;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.14)}
+.brand-bar .brand-mark{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.16);color:#fff;font-size:14px;box-shadow:none}
+.brand-bar .brand-name{color:#fff;font-size:16px}
+.brand-bar .brand-sub{color:rgba(255,255,255,.7);font-size:9px}
+.nav{flex:1;overflow-y:auto;padding:18px 12px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.35) transparent}
+.nav-group{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.62);font-weight:800;padding:10px 12px 8px}
+.nav-item{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:9px;color:rgba(255,255,255,.82);font-size:13px;font-weight:700;margin-bottom:3px;transition:.14s;position:relative}
+.nav-item:hover{background:rgba(255,255,255,.12);color:#fff}
+.nav-item.active{background:rgba(255,255,255,.18);color:#fff}
+.nav-item.active:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:3px;background:#fff}
+.nav-item svg{width:18px;height:18px;flex-shrink:0}
+.nav-item .badge-count{margin-left:auto;background:rgba(255,255,255,.22);color:#fff;font-size:10px;padding:1px 7px;border-radius:20px}
+.nav-sub{padding:0 0 6px 42px;display:flex;flex-direction:column;gap:1px}
+.nav-sub-item{font-size:12px;font-weight:600;color:rgba(255,255,255,.72);padding:6px 10px;border-radius:7px;cursor:pointer;border-left:1px solid rgba(255,255,255,.18)}
+.nav-sub-item:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-sub-item.active{color:#fff;font-weight:800;background:rgba(255,255,255,.16)}
+.sidebar-foot{border-top:1px solid rgba(255,255,255,.14);padding:14px 14px 16px}
+.side-user{display:flex;align-items:center;gap:10px;padding:8px;border-radius:10px;background:rgba(255,255,255,.12)}
+.side-user .avatar{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+.side-user .name{font-size:12px;font-weight:800;line-height:1.2;color:#fff}
+.side-user .role{font-size:10.5px;color:rgba(255,255,255,.72)}
+.signout{margin-top:10px;width:100%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);border-radius:9px;padding:8px;font-size:12px;font-weight:700;color:#fff}
+.signout:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.18)}
+
+.workspace{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{height:72px;background:#fff;border-bottom:1px solid var(--silver-200);display:flex;align-items:center;gap:16px;padding:0 28px;position:sticky;top:0;z-index:30}
+.topbar-title{font-size:15px;font-weight:800}
+.topbar-crumb{font-size:11px;color:var(--silver-400)}
+.topbar-spacer{flex:1}
+.icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--silver-200);background:#fff;display:grid;place-items:center;color:var(--silver-500);position:relative}
+.icon-btn:hover{color:var(--royal-700);border-color:var(--royal-500);background:var(--royal-50)}
+.icon-btn .notif-dot{position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--danger);border:2px solid #fff}
+.notif-wrap{position:relative}
+.notif-panel{position:absolute;right:0;top:46px;width:310px;background:var(--white);border:1px solid var(--silver-200);border-radius:12px;box-shadow:0 16px 40px rgba(18,38,94,.18);padding:8px;z-index:60}
+.notif-panel h4{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--silver-400);margin:6px 8px 8px}
+.notif-item{display:flex;gap:10px;padding:10px;border-radius:9px;cursor:pointer;transition:.15s}
+.notif-item:hover{background:var(--royal-50)}
+.notif-item .ni{width:30px;height:30px;border-radius:9px;background:var(--royal-100);color:var(--royal-700);display:grid;place-items:center;flex-shrink:0}
+.notif-item b{font-size:12px;display:block}
+.notif-item small{font-size:10.5px;color:var(--silver-500);display:block;margin-top:2px}
+.notif-foot{font-size:10.5px;color:var(--silver-400);text-align:center;padding:8px 0 4px;border-top:1px solid var(--silver-100);margin-top:4px}
+.profile-btn{display:flex;align-items:center;gap:10px;padding:5px 12px 5px 5px;border:1px solid #1E4BB8;border-radius:30px;background:#1E4BB8;transition:.15s;box-shadow:0 2px 8px rgba(30,75,184,.22)}
+.profile-btn:hover{border-color:#173A8A;background:#173A8A;box-shadow:0 4px 14px rgba(30,75,184,.32)}
+.profile-btn .pname{font-size:12.5px;font-weight:800;text-align:left;line-height:1.15;color:#fff}
+.profile-btn svg{color:#fff;width:14px;height:14px}
+body.dark .profile-btn{background:#1E4BB8;border-color:#3B73E8}
+.content{padding:28px 30px 44px;max-width:1480px;width:100%;margin:0 auto}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.page-head h1{font-size:24px;letter-spacing:-.6px;margin:0 0 3px}
+.page-head p{margin:0;font-size:13px;color:var(--silver-500)}
+
+/* ---------- Dashboard ---------- */
+.welcome-banner{background:linear-gradient(115deg,var(--royal-900),var(--royal-700) 60%,var(--royal-500));border-radius:16px;padding:28px 30px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px;position:relative;overflow:hidden;margin-bottom:18px}
+.welcome-banner:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-60px;top:-110px}
+.welcome-banner h2{font-size:25px;margin:0 0 6px;letter-spacing:-.5px}
+.welcome-banner p{margin:0;color:#CAD9F7;font-size:13px}
+.date-chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:9px 14px;border-radius:10px;font-size:12px;font-weight:700;white-space:nowrap;position:relative;z-index:1}
+.user-strip{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid var(--silver-200);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.user-strip .who{flex:1;min-width:220px}
+.user-strip .who h3{margin:0 0 2px;font-size:16px}
+.user-strip .who p{margin:0;font-size:12px;color:var(--silver-500)}
+.strip-meta{display:flex;gap:26px;flex-wrap:wrap}
+.strip-meta div label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--silver-400);font-weight:800;margin-bottom:3px}
+.strip-meta div span{font-size:12.5px;font-weight:700}
+.stat{background:#fff;border:1px solid var(--silver-200);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.stat-top{display:flex;justify-content:space-between;align-items:flex-start}
+.stat-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--silver-500)}
+.stat-icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--royal-100);color:var(--royal-600)}
+.stat-icon.green{background:var(--success-bg);color:var(--success)}
+.stat-icon.amber{background:var(--warning-bg);color:var(--warning)}
+.stat-icon.purple{background:var(--purple-bg);color:var(--purple)}
+.stat-value{font-size:27px;font-weight:800;letter-spacing:-.7px;margin:10px 0 2px}
+.stat-note{font-size:11px;color:var(--silver-500)}
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.quick{border:1px solid var(--silver-200);border-radius:11px;padding:14px;display:flex;align-items:center;gap:12px;background:#fff;cursor:pointer;transition:.16s;text-align:left}
+.quick:hover{border-color:var(--royal-500);background:var(--royal-50);transform:translateY(-1px)}
+.quick .qi{width:36px;height:36px;border-radius:9px;background:var(--royal-100);color:var(--royal-600);display:grid;place-items:center;flex-shrink:0}
+.quick .qt{font-size:12.5px;font-weight:800;display:block}
+.quick .qd{font-size:10.5px;color:var(--silver-500);display:block}
+.quick svg:last-child{margin-left:auto;width:15px;height:15px;color:var(--silver-400)}
+.activity-list{display:flex;flex-direction:column}
+.activity{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid var(--silver-100)}
+.activity:last-child{border-bottom:0}
+.activity .ad{width:7px;height:7px;border-radius:50%;background:var(--royal-500);margin-top:6px;flex-shrink:0}
+.activity b{font-size:12.5px}
+.activity p{margin:1px 0 0;font-size:11.5px;color:var(--silver-500)}
+.activity time{font-size:10px;color:var(--silver-400);margin-left:auto;white-space:nowrap}
+
+/* ---------- Staff Details / Profile (MAIN FOCUS) ---------- */
+.profile-hero{background:#fff;border:1px solid var(--silver-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
+.hero-cover{height:108px;background:linear-gradient(110deg,var(--royal-900),var(--royal-700) 65%,var(--royal-500));position:relative}
+.hero-cover:after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:18px 18px}
+.hero-body{padding:0 26px 22px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.hero-body .avatar{margin-top:-48px;position:relative;z-index:2}
+.hero-main{flex:1;min-width:240px;padding-top:14px}
+.hero-main h2{margin:0 0 4px;font-size:21px;letter-spacing:-.4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero-main .sub{font-size:12.5px;color:var(--silver-500);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.hero-main .sub span+span:before{content:"•";margin-right:10px;color:var(--silver-300)}
+.hero-actions{display:flex;gap:8px;padding-top:16px;flex-wrap:wrap}
+.snapshot{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--silver-200)}
+.snapshot>div{padding:14px 22px;border-right:1px solid var(--silver-200)}
+.snapshot>div:last-child{border-right:0}
+.snapshot label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--silver-400);font-weight:800;margin-bottom:3px}
+.snapshot span{font-size:12.5px;font-weight:700}
+@media(max-width:900px){.snapshot{grid-template-columns:1fr 1fr}.snapshot>div{border-bottom:1px solid var(--silver-200)}}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--silver-200);margin-bottom:18px;overflow-x:auto}
+.tab{padding:12px 16px;font-size:12.5px;font-weight:800;color:var(--silver-500);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
+.tab:hover{color:var(--royal-600)}
+.tab.active{color:var(--royal-700);border-bottom-color:var(--royal-600)}
+.field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:20px 26px}
+.f label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--silver-400);font-weight:800;margin-bottom:5px}
+.f .val{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;word-break:break-word}
+.f .val .lock{color:var(--silver-400);width:13px;height:13px}
+.f.full{grid-column:1/-1}
+.locked-val{filter:blur(5px);user-select:none;letter-spacing:2px}
+.notice{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:10px;background:var(--royal-50);border:1px solid #D9E6FF;color:var(--royal-700);font-size:12px;line-height:1.6;margin-bottom:18px}
+.notice svg{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+.section-title{font-size:12px;text-transform:uppercase;letter-spacing:.7px;color:var(--silver-500);font-weight:800;margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--silver-100)}
+.section-title:first-child{margin-top:0}
+.timeline{position:relative;padding-left:24px}
+.timeline:before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--silver-200)}
+.tl{position:relative;padding-bottom:18px}
+.tl:before{content:"";position:absolute;left:-23px;top:4px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--royal-500)}
+.tl:last-child{padding-bottom:0}
+.tl b{font-size:12.5px}
+.tl small{display:block;color:var(--silver-500);font-size:11.5px;margin-top:2px}
+.tl time{font-size:10.5px;color:var(--silver-400);float:right}
+.progress{height:7px;border-radius:20px;background:var(--silver-100);overflow:hidden;margin-top:8px}
+.progress i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--royal-700),var(--royal-500))}
+.completeness{display:flex;align-items:center;gap:14px}
+.completeness .pct{font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--royal-700)}
+.edit-actions{display:flex;gap:10px;margin-top:18px}
+
+/* ---------- Tables ---------- */
+.table-wrap{overflow-x:auto}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px}
+table.data th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--silver-400);font-weight:800;padding:11px 12px;border-bottom:1px solid var(--silver-200);background:var(--silver-50);white-space:nowrap}
+table.data td{padding:12px;border-bottom:1px solid var(--silver-100);vertical-align:middle}
+table.data tr:last-child td{border-bottom:0}
+table.data tr.clickable{cursor:pointer}
+table.data tr.clickable:hover{background:var(--royal-50)}
+.person-cell{display:flex;align-items:center;gap:10px}
+.person-cell b{display:block;font-size:12.5px}
+.person-cell small{display:block;color:var(--silver-500);font-size:10.5px}
+code{background:var(--silver-100);padding:2px 6px;border-radius:5px;font-size:11px;color:var(--royal-700)}
+
+/* ---------- Leave ---------- */
+.leave-card{border:1px solid var(--silver-200);border-radius:var(--radius);background:#fff;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.leave-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--royal-600)}
+.leave-card.emergency:before{background:var(--warning)}
+.leave-card.wfh:before{background:var(--purple)}
+.leave-card .lc-top{display:flex;justify-content:space-between;align-items:flex-start}
+.leave-card .lc-icon{width:38px;height:38px;border-radius:10px;background:var(--royal-100);color:var(--royal-600);display:grid;place-items:center}
+.leave-card.emergency .lc-icon{background:var(--warning-bg);color:var(--warning)}
+.leave-card.wfh .lc-icon{background:var(--purple-bg);color:var(--purple)}
+.leave-card .lc-num{font-size:30px;font-weight:800;letter-spacing:-1px;margin:12px 0 0}
+.leave-card .lc-num small{font-size:13px;color:var(--silver-400);font-weight:600}
+.seg{display:inline-flex;background:var(--silver-100);border-radius:10px;padding:4px;gap:3px}
+.seg button{border:0;background:transparent;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;color:var(--silver-500)}
+.seg button.active{background:#fff;color:var(--royal-700);box-shadow:0 1px 4px rgba(18,38,94,.1)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.form-grid .full{grid-column:1/-1}
+@media(max-width:700px){.form-grid{grid-template-columns:1fr}}
+
+/* ---------- Calendar ---------- */
+.cal-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.cal-nav{display:flex;align-items:center;gap:10px}
+.cal-nav h3{margin:0;font-size:17px;min-width:160px;text-align:center}
+.cal-nav button{width:32px;height:32px;border:1px solid var(--silver-200);background:#fff;border-radius:8px;color:var(--silver-500);font-weight:800}
+.cal-nav button:hover{border-color:var(--royal-500);color:var(--royal-700)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--silver-500);margin-bottom:14px}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--silver-200);border-radius:12px;overflow:hidden;background:#fff}
+.cal-dow{background:var(--silver-50);padding:10px;text-align:center;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--silver-500);border-bottom:1px solid var(--silver-200)}
+.cal-cell{min-height:108px;padding:8px;border-right:1px solid var(--silver-100);border-bottom:1px solid var(--silver-100)}
+.cal-cell:nth-child(7n){border-right:0}
+.cal-cell.blank{background:var(--silver-50)}
+.cal-cell.today{background:var(--royal-50)}
+.cal-day{font-size:11.5px;font-weight:800;color:var(--silver-500);margin-bottom:5px}
+.cal-cell.today .cal-day{background:var(--royal-600);color:#fff;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;margin-bottom:4px}
+.cal-event{font-size:9.5px;padding:3px 6px;border-radius:5px;margin-bottom:3px;font-weight:700;line-height:1.3;word-break:break-word}
+.ev-holiday{background:var(--danger-bg);color:var(--danger)}
+.ev-annual{background:var(--royal-100);color:var(--royal-700)}
+.ev-emergency{background:var(--warning-bg);color:var(--warning)}
+.ev-wfh{background:var(--purple-bg);color:var(--purple)}
+.ev-team{background:var(--teal-bg);color:var(--teal)}
+
+/* ---------- Attendance / Claim ---------- */
+.big-time{font-size:30px;font-weight:800;letter-spacing:-.8px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:110px;padding-top:10px}
+.bar-wrap{flex:1;text-align:center}
+.bar{width:100%;max-width:34px;margin:0 auto;background:linear-gradient(180deg,var(--royal-500),var(--royal-700));border-radius:6px 6px 0 0;display:block}
+.bar-wrap small{display:block;font-size:10px;color:var(--silver-400);margin-top:6px}
+.clock-btn{width:100%;padding:14px;border:0;border-radius:12px;background:linear-gradient(120deg,var(--royal-700),var(--royal-500));color:#fff;font-size:14px;font-weight:800;box-shadow:0 6px 16px rgba(36,86,199,.25)}
+.clock-btn:hover{filter:brightness(1.06)}
+
+/* ---------- Toast ---------- */
+#toast{position:fixed;bottom:26px;right:26px;background:var(--royal-900);color:#fff;padding:13px 18px;border-radius:11px;font-size:12.5px;font-weight:600;box-shadow:0 12px 34px rgba(18,38,94,.3);opacity:0;transform:translateY(12px);transition:.24s;pointer-events:none;z-index:200;max-width:340px}
+#toast.show{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   LATEST FIXES — brand, sidebar, quick access, drag/drop, dark mode
+   ============================================================ */
+/* Brand logo (attached asset) */
+.brand-logo{width:42px;height:42px;object-fit:contain;border-radius:10px;flex-shrink:0;background:#fff}
+.brand-bar .brand-logo{width:34px;height:34px}
+.brand-bar .brand-name{font-size:12.5px;line-height:1.15;white-space:normal}
+.brand-bar .brand-sub{font-size:8px;letter-spacing:.7px}
+.brand-txt{min-width:0}
+
+/* Sidebar minimise + collapsible sub-section */
+.sidebar{min-width:0;transition:width .2s ease}
+.sidebar.min{width:72px}
+.sidebar.min .brand-bar{padding:0;justify-content:center}
+.sidebar.min .brand-bar .mini-toggle{display:none}
+.sidebar.min .brand-txt,.sidebar.min .nav-group,.sidebar.min .nav-item span,
+.sidebar.min .nav-sub,.sidebar.min .sidebar-foot,.sidebar.min .nav-caret{display:none}
+.sidebar.min .nav-item{justify-content:center;padding:12px}
+.sidebar.min .brand-bar .brand-logo{width:40px;height:40px;border-radius:12px}
+/* Expand control lives in the top bar while the sidebar is minimised */
+#topMiniBtn{display:none}
+body.sidebar-min #topMiniBtn{display:grid}
+.mini-toggle{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.mini-toggle:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.2)}
+.mini-toggle svg{width:14px;height:14px}
+.nav-item .nav-caret{margin-left:auto;width:13px;height:13px;transition:transform .16s}
+.nav-item .nav-caret.open{transform:rotate(180deg)}
+
+/* Quick access — centred logo and clean centred tiles */
+.quick-logo{display:flex;justify-content:center;margin-bottom:12px}
+.quick-logo img{height:46px;object-fit:contain}
+.quick-grid{grid-template-columns:repeat(4,1fr)}
+.quick{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:18px 10px;min-height:120px}
+.quick .qi{width:42px;height:42px;border-radius:12px}
+.quick svg:last-child{display:none}
+
+/* Calendar drag & drop for HR / Boss */
+.cal-event[draggable="true"]{cursor:grab}
+.cal-event[draggable="true"]:active{cursor:grabbing}
+.cal-cell.drop-target{outline:2px dashed var(--royal-500);outline-offset:-3px;background:var(--royal-50)}
+.cal-hint{font-size:11px;color:var(--royal-700);background:var(--royal-50);border:1px solid #D6E4FF;border-radius:8px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.cal-hint svg{width:14px;height:14px;flex-shrink:0}
+
+/* Dark mode overrides */
+body.dark{--silver-50:#0D1424;--silver-100:#141E31;--silver-200:#243249;--silver-300:#34445F;--silver-400:#8595B2;--silver-500:#AAB8D0;--ink:#E9EFFA;--white:#172136;--royal-50:#152546;--royal-100:#1D3462;--royal-600:#6E9BFF;--royal-700:#8FB2FF;--success-bg:#123A2E;--warning-bg:#3A2B12;--danger-bg:#3A1E23;--purple-bg:#2C2349;--teal-bg:#12363C;--shadow:0 1px 3px rgba(0,0,0,.25),0 6px 20px rgba(0,0,0,.2);background:var(--silver-50)}
+body.dark .login-screen,body.dark .login-form-wrap{background:var(--silver-50)}
+body.dark .card,body.dark .topbar,body.dark .stat,body.dark .leave-card,body.dark .calendar-grid,body.dark .profile-hero,body.dark .user-strip,body.dark .quick,body.dark .input,body.dark select.input,body.dark textarea.input,body.dark .btn,body.dark .icon-btn,body.dark .profile-btn,body.dark .role-card,body.dark .seg button.active,body.dark .tl:before,body.dark .cal-nav button{background:var(--white)}
+/* Sidebar stays royal blue with white text in both themes */
+body.dark .sidebar{background:var(--sidebar-bg);color:#fff}
+body.dark .brand-logo{background:#fff}
+body.dark .signout,body.dark .mini-toggle{background:rgba(255,255,255,.12);color:#fff}
+body.dark .welcome-banner,body.dark .hero-cover{filter:saturate(.92) brightness(.9)}
+body.dark .notice{background:var(--royal-50);border-color:var(--royal-100)}
+body.dark .cal-cell.blank,body.dark .cal-dow{background:var(--silver-100)}
+body.dark .cal-cell.today,body.dark .cal-cell.drop-target{background:var(--royal-50)}
+body.dark .demo-note{border-color:var(--royal-100)}
+body.dark .demo-acct{background:var(--white);border-color:var(--royal-100)}
+body.dark .demo-acct:hover{background:var(--royal-50)}
+@media(max-width:1150px){.quick-grid{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:900px){
+  .sidebar{width:64px}
+  .brand-bar .brand-name,.brand-bar .brand-sub,.nav-group,.nav-item span,.nav-sub,.sidebar-foot,.signout{display:none}
+  .nav-item{justify-content:center;padding:12px}
+  .topbar{padding:0 14px}
+  .profile-btn .pname,.profile-btn .prole,.profile-btn svg{display:none}
+  .content{padding:18px 14px 40px}
+  .login-brand{display:none}
+  .mini-toggle{display:none}
+  .notif-panel{position:fixed;right:12px;top:64px;width:min(310px,calc(100% - 24px))}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ LOGIN ============================ -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-brand">
+    <div class="brand-row">
+      <img class="brand-logo" src="assets/logo.png" alt="2en Apps Sdn. Bhd. logo">
+      <div><div class="brand-name">2en Apps Sdn. Bhd.</div><div class="brand-sub">Human Resource Management System</div></div>
+    </div>
+    <div class="login-pitch">
+      <h1>People, managed<br>with confidence.</h1>
+      <p>One trusted workspace for your profile, attendance, leave and claims — designed for Malaysian teams.</p>
+      <div class="pitch-list">
+        <div class="pitch-item"><div class="pitch-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><b>One profile for every employee</b><div style="color:#B9C9F0;font-size:12px">Personal, employment and statutory details in one place</div></div></div>
+        <div class="pitch-item"><div class="pitch-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div><b>Leave &amp; calendar, clear at a glance</b><div style="color:#B9C9F0;font-size:12px">Public holidays and team leave in one view</div></div></div>
+        <div class="pitch-item"><div class="pitch-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><b>Built on trust &amp; privacy</b><div style="color:#B9C9F0;font-size:12px">Role-based access and a full audit trail</div></div></div>
+      </div>
+    </div>
+    <div class="login-brand-foot">© 2026 2en Apps Sdn Bhd · Corporate &amp; Trustworthy HR Platform</div>
+  </div>
+
+  <div class="login-form-wrap">
+    <div class="login-form">
+      <div class="login-eyebrow">Secure staff access</div>
+      <h2>Welcome back</h2>
+      <p class="lede">Sign in with your work email and password. Your access level is resolved from your account.</p>
+
+      <div class="field"><label class="lbl" for="loginEmail">Work email</label><input class="input" id="loginEmail" type="email" placeholder="name@2enapps.my"></div>
+      <div class="field"><label class="lbl" for="loginPass">Password</label><input class="input" id="loginPass" type="password" placeholder="••••••••"></div>
+      <div class="field-row">
+        <label class="checkline"><input type="checkbox" id="remember" checked> Remember me</label>
+        <a class="link" href="#" onclick="toast('Demo mode: password reset is not available. Use a demo account below.');return false">Forgot password?</a>
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <button class="btn btn-primary btn-block" style="padding:13px" onclick="signIn()">Sign in to workspace →</button>
+      <div class="demo-note"><b>Demo accounts.</b> Click an email to fill the form (all passwords are <code>demo1234</code>). Your role is detected from the email — no role selection needed.<div class="demo-accounts">
+        <button type="button" class="demo-acct" onclick="fillDemo('owner')"><b>Owner / Boss</b><small>faisal@2enapps.my</small></button>
+        <button type="button" class="demo-acct" onclick="fillDemo('hr')"><b>HR Admin</b><small>aminah.osman@2enapps.my</small></button>
+        <button type="button" class="demo-acct" onclick="fillDemo('manager')"><b>Manager</b><small>wei.jian@2enapps.my</small></button>
+        <button type="button" class="demo-acct" onclick="fillDemo('staff')"><b>Staff</b><small>aina.rahman@2enapps.my</small></button>
+        <button type="button" class="demo-acct" onclick="fillDemo('intern')"><b>Intern</b><small>arif.kamal@2enapps.my</small></button>
+      </div></div>
+      <div style="margin-top:16px;text-align:center"><a class="link" href="landing.html">← Back to home</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ APP SHELL ============================ -->
+<div id="appShell" class="app-shell hidden">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-bar">
+      <img class="brand-logo" src="assets/logo.png" alt="2en Apps Sdn. Bhd. logo">
+      <div class="brand-txt"><div class="brand-name">2en Apps Sdn. Bhd.</div><div class="brand-sub">HR MANAGEMENT SYSTEM</div></div>
+      <button class="mini-toggle" onclick="toggleSidebar()" title="Minimise / expand sidebar" aria-label="Minimise sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar-foot">
+      <div class="side-user" id="sideUser"></div>
+      <button class="signout" onclick="signOut()">Sign out</button>
+    </div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <button class="icon-btn" id="topMiniBtn" title="Expand sidebar" onclick="toggleSidebar()" aria-label="Expand sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div><div class="topbar-title" id="topTitle">Dashboard</div><div class="topbar-crumb" id="topCrumb">Home / Dashboard</div></div>
+      <div class="topbar-spacer"></div>
+      <button class="icon-btn" id="darkBtn" title="Switch to dark mode" onclick="toggleDark()" aria-label="Switch to dark mode"></button>
+      <div class="notif-wrap">
+        <button class="icon-btn" id="notifBtn" title="Notifications" onclick="toggleNotifs()" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><span class="notif-dot"></span></button>
+        <div class="notif-panel hidden" id="notifPanel"></div>
+      </div>
+      <!-- Profile button at right corner: employee name only — opens own Staff Profile -->
+      <button class="profile-btn" onclick="openMyProfile()" title="Open my profile &amp; details">
+        <span id="topAvatar"></span>
+        <span class="pname" id="topName"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+    </header>
+    <main class="content" id="mainContent"></main>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ==========================================================================
+   DATA
+   ========================================================================== */
+const STAFF = {
+  aina:{
+    id:'EMP-2026-0042', name:'Aina Binti Rahman', first:'Aina', last:'Binti Rahman', role:'Staff', roleKey:'staff',
+    position:'Software Engineer', grade:'E3', department:'Information Technology', branch:'Cyberjaya',
+    manager:'Lim Wei Jian', status:'Active', type:'Permanent', hire:'01 March 2023', confirm:'01 September 2023',
+    dob:'14 July 1996', gender:'Female', race:'Malay', religion:'Islam', nationality:'Malaysian', marital:'Single',
+    ic:'940714-12-5678', phone:'012-345 6789', email:'aina.rahman@2enapps.my',
+    preferred:'Aina', homePhone:'03-8321 4567', personalEmail:'aina.rahman@example.my',
+    address:'No. 12, Jalan Cyber 5, Cyber 12, 63000 Cyberjaya, Selangor',
+    mailing:'Same as home address',
+    nok:'Rahman Bin Ali', nokRel:'Father', nokPhone:'019-876 5432',
+    ek:'Rahman Bin Ali', ekRel:'Father', ekPhone:'019-876 5432',
+    dependents:'None', salary:'RM 7,500.00', bank:'Maybank · 5142 •••• 3312',
+    epf:'A1234••••', socso:'120314••••', tax:'SG1234••••',
+    leave:{annual:12, emergency:5, wfh:8, annualTotal:18, emergencyTotal:7, wfhTotal:12},
+    docs:[['IC','NRIC','2019-05-12','—','Verified'],['Employment Contract','HR Department','2023-03-01','2028-03-01','Valid'],['Degree Certificate','Universiti Malaya','2019-09-01','—','Verified'],['Professional Certificate','MDEC','2025-06-10','2026-12-15','Expiring soon']],
+    history:[['Onboarded','01 March 2023','Joined as Junior Software Engineer'],['Confirmed','01 September 2023','Probation completed successfully'],['Promotion','01 January 2025','Promoted to Software Engineer · RM6,200 → RM7,500']],
+    completeness:94
+  },
+  siti:{
+    id:'EMP-2021-0007', name:'Siti Aminah Binti Osman', first:'Siti Aminah', last:'Binti Osman', role:'HR Admin', roleKey:'hr',
+    position:'HR Manager', grade:'M2', department:'Human Resource', branch:'Ampang',
+    manager:'—', status:'Active', type:'Permanent', hire:'01 June 2021', confirm:'01 December 2021',
+    dob:'25 April 1988', gender:'Female', race:'Malay', religion:'Islam', nationality:'Malaysian', marital:'Married',
+    ic:'880425-12-7788', phone:'012-888 2200', email:'aminah.osman@2enapps.my',
+    preferred:'Aminah', homePhone:'03-4256 7788', personalEmail:'aminah.osman@example.my',
+    address:'No. 3, Jalan Ukay, 68000 Ampang, Selangor',
+    mailing:'Same as home address',
+    nok:'Osman Bin Ahmad', nokRel:'Father', nokPhone:'017-555 1234',
+    ek:'Osman Bin Ahmad', ekRel:'Father', ekPhone:'017-555 1234',
+    dependents:'2 children', salary:'RM 11,800.00', bank:'RHB · 2233 •••• 1100',
+    epf:'D1122••••', socso:'880425••••', tax:'SG1122••••',
+    leave:{annual:9, emergency:5, wfh:10, annualTotal:18, emergencyTotal:7, wfhTotal:12},
+    docs:[['IC','NRIC','2018-02-01','—','Verified'],['Employment Contract','HR Department','2021-06-01','2027-06-01','Valid']],
+    history:[['Onboarded','01 June 2021','Joined as HR Executive'],['Promotion','01 January 2023','Promoted to HR Manager']],
+    completeness:97
+  },
+  manager:{
+    id:'EMP-2024-0025', name:'Lim Wei Jian', first:'Wei Jian', last:'Lim', role:'Manager', roleKey:'manager',
+    position:'IT Team Lead', grade:'M1', department:'Information Technology', branch:'Cyberjaya',
+    manager:'Mohd Faisal Bin Kamal', status:'Active', type:'Permanent', hire:'10 July 2024', confirm:'10 January 2025',
+    dob:'09 May 1992', gender:'Male', race:'Chinese', religion:'Buddhism', nationality:'Malaysian', marital:'Married',
+    ic:'920509-08-3344', phone:'016-720 4410', email:'wei.jian@2enapps.my',
+    preferred:'Wei Jian', homePhone:'03-8311 2290', personalEmail:'weijian.lim@example.my',
+    address:'No. 18, Jalan Cyber 8, Cyber 12, 63000 Cyberjaya, Selangor',
+    mailing:'Same as home address',
+    nok:'Tan Mei Ling', nokRel:'Spouse', nokPhone:'017-330 8890', nokEmail:'meiling.tan@example.my',
+    ek:'Tan Mei Ling', ekRel:'Spouse', ekPhone:'017-330 8890',
+    dependents:'1 child', salary:'RM 10,400.00', bank:'CIMB · 7781 •••• 2205',
+    epf:'C5566••••', socso:'920509••••', tax:'SG5566••••',
+    leave:{annual:8, emergency:4, wfh:9, annualTotal:18, emergencyTotal:7, wfhTotal:12},
+    docs:[['IC','NRIC','2020-04-10','—','Verified'],['Employment Contract','HR Department','2024-07-10','2029-07-10','Valid']],
+    history:[['Onboarded','10 July 2024','Joined as IT Team Lead'],['Confirmed','10 January 2025','Probation completed successfully']],
+    completeness:92
+  },
+  faisal:{
+    /* Company owner — not an employee: no position, manager or department, non-EMP ID, no personal leave/clock-in */
+    id:'OWNER-0001', name:'Mohd Faisal Bin Kamal', first:'Mohd Faisal', last:'Bin Kamal', role:'Owner / Boss', roleKey:'boss',
+    position:'', grade:'', department:'', branch:'Cyberjaya',
+    manager:'', status:'Active', type:'Owner', hire:'01 January 2019', confirm:'—',
+    dob:'03 November 1985', gender:'Male', race:'Malay', religion:'Islam', nationality:'Malaysian', marital:'Married',
+    ic:'851103-12-4455', phone:'019-333 2211', email:'faisal@2enapps.my',
+    preferred:'Faisal', homePhone:'03-4256 1100', personalEmail:'faisal@example.my',
+    address:'No. 21, Jalan Putra, 68000 Ampang, Selangor',
+    mailing:'Same as home address',
+    nok:'Siti Aisyah Bt Yusof', nokRel:'Spouse', nokPhone:'013-444 8899',
+    ek:'Siti Aisyah Bt Yusof', ekRel:'Spouse', ekPhone:'013-444 8899',
+    dependents:'3 children', salary:'—', bank:'—',
+    epf:'—', socso:'—', tax:'—',
+    leave:{annual:0, emergency:0, wfh:0, annualTotal:0, emergencyTotal:0, wfhTotal:0},
+    docs:[['IC','NRIC','2017-08-20','—','Verified'],['SSM Company Registration','SSM Malaysia','2019-01-01','—','Valid']],
+    history:[['Founded','01 January 2019','Established 2en Apps Sdn. Bhd.'],['Owner','01 January 2019','Company owner & final leave approver']],
+    completeness:100
+  },
+  arif:{
+    id:'EMP-2026-0071', name:'Muhammad Arif Bin Kamal', first:'Muhammad Arif', last:'Bin Kamal', role:'Intern', roleKey:'intern',
+    position:'Intern Developer', grade:'—', department:'Information Technology', branch:'Cyberjaya',
+    manager:'Lim Wei Jian', status:'Intern', type:'Internship', hire:'15 September 2026', confirm:'15 December 2026',
+    dob:'20 February 2001', gender:'Male', race:'Malay', religion:'Islam', nationality:'Malaysian', marital:'Single',
+    ic:'010220-14-1122', phone:'017-222 1188', email:'arif.kamal@2enapps.my',
+    preferred:'Arif', homePhone:'03-4260 1188', personalEmail:'arif.kamal@example.my',
+    address:'No. 8, Jalan UP 1/2, Ukay Perdana, 68000 Ampang, Selangor',
+    mailing:'Same as home address',
+    nok:'Kamal Bin Hussin', nokRel:'Father', nokPhone:'012-998 1122',
+    ek:'Kamal Bin Hussin', ekRel:'Father', ekPhone:'012-998 1122',
+    dependents:'None', salary:'RM 1,800.00 (allowance)', bank:'CIMB · 7060 •••• 8899',
+    epf:'B9988••••', socso:'010220••••', tax:'—',
+    leave:{annual:0, emergency:3, wfh:4, annualTotal:0, emergencyTotal:5, wfhTotal:6},
+    docs:[['IC','NRIC','2024-03-01','—','Verified'],['Internship Agreement','HR Department','2026-09-15','2026-12-15','Valid']],
+    history:[['Onboarded','15 September 2026','Joined as Intern Developer']],
+    completeness:78
+  }
+};
+
+const ROLES = {
+  boss:{account:'faisal',email:'faisal@2enapps.my',password:'demo1234',label:'Owner / Boss'},
+  hr:{account:'siti',email:'aminah.osman@2enapps.my',password:'demo1234',label:'HR Admin'},
+  manager:{account:'manager',email:'wei.jian@2enapps.my',password:'demo1234',label:'Manager'},
+  staff:{account:'aina',email:'aina.rahman@2enapps.my',password:'demo1234',label:'Staff'},
+  intern:{account:'arif',email:'arif.kamal@2enapps.my',password:'demo1234',label:'Intern'}
+};
+
+let LEAVES = [
+  {id:1,staff:'aina',type:'Annual Leave',start:'2026-11-10',end:'2026-11-11',days:2,reason:'Family event',status:'Approved'},
+  {id:2,staff:'aina',type:'Work From Home',start:'2026-11-24',end:'2026-11-24',days:1,reason:'Home broadband installation',status:'Approved'},
+  {id:3,staff:'arif',type:'Emergency Leave',start:'2026-11-05',end:'2026-11-05',days:1,reason:'Medical appointment',status:'Approved'},
+  {id:4,staff:'arif',type:'Work From Home',start:'2026-11-19',end:'2026-11-19',days:1,reason:'Assignment submission',status:'Pending'},
+  {id:5,staff:'siti',type:'Annual Leave',start:'2026-11-30',end:'2026-12-01',days:2,reason:'Year-end vacation',status:'Pending'},
+  {id:6,staff:'aina',type:'Annual Leave',start:'2026-12-15',end:'2026-12-16',days:2,reason:'Year-end break',status:'Pending'}
+];
+
+const HOLIDAYS = [
+  {date:'2026-01-01',name:"New Year's Day"},{date:'2026-02-17',name:'Chinese New Year'},{date:'2026-02-18',name:'Chinese New Year'},
+  {date:'2026-03-21',name:'Hari Raya Aidilfitri'},{date:'2026-03-22',name:'Hari Raya Aidilfitri'},
+  {date:'2026-05-01',name:'Labour Day'},{date:'2026-05-31',name:'Wesak Day'},{date:'2026-06-03',name:"Agong's Birthday"},
+  {date:'2026-08-31',name:'National Day'},{date:'2026-09-16',name:'Malaysia Day'},{date:'2026-11-08',name:'Deepavali'},
+  {date:'2026-12-25',name:'Christmas Day'}
+];
+
+const ACTIVITY = {
+  aina:[
+    {a:'Leave application submitted',d:'Annual Leave · 15–16 Dec 2026',t:'Today, 09:42'},
+    {a:'Profile details viewed',d:'Statutory & Payroll section',t:'17 Nov 2026, 16:10'},
+    {a:'Work From Home approved',d:'24 Nov 2026',t:'15 Nov 2026, 11:20'},
+    {a:'Profile updated',d:'Mobile number changed',t:'02 Nov 2026, 14:05'}
+  ],
+  siti:[{a:'Leave request approved',d:'Muhammad Arif · 5 Nov',t:'Today, 08:15'},{a:'Staff directory exported',d:'November 2026',t:'17 Nov 2026'}],
+  manager:[{a:'Team leave reviewed',d:'WFH request · Arif · 19 Nov',t:'Today, 10:05'},{a:'Profile details verified',d:'Contact information up to date',t:'15 Nov 2026'}],
+  faisal:[{a:'Leave approved',d:'Aina Rahman · WFH 24 Nov',t:'Yesterday'},{a:'Team calendar reviewed',d:'November 2026',t:'16 Nov 2026'}],
+  arif:[{a:'Emergency leave approved',d:'5 Nov 2026',t:'06 Nov 2026'},{a:'Profile completed',d:'Onboarding documents verified',t:'16 Sep 2026'}]
+};
+
+const S = {authed:false,roleKey:null,userId:null,view:'dashboard',profileId:null,profileTab:'Overview',editMode:false,calendarScope:'mine',calMonth:10,clockedIn:true,sidebarMin:false,dark:false,subs:{leave:true},leavePeriod:'future',claimForm:false,employeeForm:false,requestOpen:false,notifOpen:false};
+const TODAY='2026-11-19';
+const TODAY_LABEL='19 Nov 2026';
+const DEMO_DATE=new Date(TODAY+'T09:30:00');
+try{S.dark=localStorage.getItem('hrDark')==='1';document.body.classList.toggle('dark',S.dark)}catch(e){}
+
+/* ==========================================================================
+   ICONS / UTILITIES
+   ========================================================================== */
+const P = {
+  grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
+  receipt:'<path d="M5 3h14v18l-3-2-4 2-4-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
+  users:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M16 5.5a3 3 0 0 1 0 5"/><path d="M17 15c2.3.5 4 2.2 4 5"/>',
+  user:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/>',
+  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+  check:'<path d="M20 6L9 17l-5-5"/>',
+  download:'<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>',
+  pencil:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z"/>'
+};
+function ico(k,cls){return '<svg class="'+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+P[k]+'</svg>'}
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+const initials=n=>n.split(' ').filter((w,i)=>i<2||w.length<4).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),3200)}
+function pill(text,tone){return '<span class="pill '+(tone||'silver')+'"><i class="dot"></i>'+text+'</span>'}
+function avatar(id,size){const p=STAFF[id];return '<span class="avatar '+(size||'md')+' '+p.roleKey+'">'+initials(p.name)+'</span>'}
+function me(){return STAFF[S.userId]}
+function isHR(){return S.roleKey==='hr'}
+function isBoss(){return S.roleKey==='boss'}
+function isManager(){return S.roleKey==='manager'}
+function isPriv(){return isHR()||isBoss()||isManager()}
+function canStatutoryFull(){return isHR()}
+function canSeeOtherProfiles(){return isPriv()}
+function roleTone(k){return k==='staff'?'blue':k==='hr'?'green':k==='boss'?'purple':k==='manager'?'teal':'amber'}
+function directReportIds(){
+  if(!isManager())return Object.keys(STAFF);
+  const mgr=me().name;
+  return Object.keys(STAFF).filter(id=>id===S.userId||STAFF[id].manager===mgr);
+}
+function canDecideLeave(l){
+  if(isHR()||isBoss())return true;
+  return isManager()&&l.staff!==S.userId&&STAFF[l.staff]&&STAFF[l.staff].manager===me().name;
+}
+function isRestrictedViewer(){return (isBoss()||isManager())&&S.profileId!==S.userId}
+function addActivity(id,a,d){ACTIVITY[id]=ACTIVITY[id]||[];ACTIVITY[id].unshift({a:a,d:d,t:'Just now'})}
+const LEAVE_KEY={'Annual Leave':'annual','Emergency Leave':'emergency','Work From Home':'wfh'};
+function isoDate(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function displayDate(s){return new Date(s+'T00:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}
+function downloadFile(name,text,mime){
+  const blob=new Blob([text],{type:mime||'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},0);
+}
+function toggleNotifs(){S.notifOpen=!S.notifOpen;renderNotifs()}
+function renderNotifs(){
+  const panel=$('#notifPanel');if(!panel)return;
+  panel.classList.toggle('hidden',!S.notifOpen);
+  if(!S.notifOpen)return;
+  const pending=LEAVES.filter(l=>l.status==='Pending').length;
+  panel.innerHTML='<h4>Notifications</h4>'+
+    '<div class="notif-item" onclick="S.notifOpen=false;renderNotifs();go(\'leave\')"><span class="ni">'+ico('calendar')+'</span><div><b>'+pending+' leave request'+(pending===1?'':'s')+' awaiting decision</b><small>Open Leave Requests to review</small></div></div>'+
+    '<div class="notif-item" onclick="S.notifOpen=false;renderNotifs();openProfile(\'aina\')"><span class="ni">'+ico('info')+'</span><div><b>Professional certificate expiring</b><small>Aina Rahman · 15 Dec 2026</small></div></div>'+
+    '<div class="notif-foot">Demo notifications · updated '+TODAY_LABEL+'</div>';
+}
+
+/* Shell controls: minimise sidebar, collapsible submenu, dark mode */
+const MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>';
+const SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+const CARET='<svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>';
+function toggleSidebar(){S.sidebarMin=!S.sidebarMin;$('#sidebar').classList.toggle('min',S.sidebarMin);document.body.classList.toggle('sidebar-min',S.sidebarMin);toast(S.sidebarMin?'Sidebar minimised':'Sidebar expanded')}
+function toggleSub(k){S.subs[k]=!S.subs[k];renderShell()}
+function updateDarkBtn(){const b=$('#darkBtn');if(!b)return;b.innerHTML=S.dark?SUN:MOON;b.title=S.dark?'Switch to light mode':'Switch to dark mode';b.setAttribute('aria-label',b.title)}
+function toggleDark(){S.dark=!S.dark;document.body.classList.toggle('dark',S.dark);updateDarkBtn();try{localStorage.setItem('hrDark',S.dark?'1':'0')}catch(e){}toast(S.dark?'Dark mode enabled':'Light mode enabled')}
+
+/* ==========================================================================
+   LOGIN
+   ========================================================================== */
+function findRoleByEmail(email){
+  const clean=String(email||'').trim().toLowerCase();
+  return Object.keys(ROLES).find(k=>ROLES[k].email.toLowerCase()===clean)||null;
+}
+function fillDemo(key){
+  const roleKey=key==='owner'?'boss':key;
+  if(!ROLES[roleKey])return;
+  $('#loginEmail').value=ROLES[roleKey].email;
+  $('#loginPass').value=ROLES[roleKey].password;
+  $('#loginError').textContent='';
+  $('#loginEmail').focus();
+  toast(ROLES[roleKey].label+' demo account filled. Click Sign in to continue.');
+}
+function signIn(){
+  const email=$('#loginEmail').value.trim();
+  const password=$('#loginPass').value;
+  const err=$('#loginError');
+  if(!email||!password){err.textContent='Email and password are required.';return}
+  const roleKey=findRoleByEmail(email);
+  if(!roleKey){err.textContent='No account found for that email. Use one of the demo accounts below.';return}
+  if(ROLES[roleKey].password!==password){err.textContent='Incorrect password. Demo password is demo1234.';return}
+  err.textContent='';
+  S.authed=true;S.roleKey=roleKey;S.userId=ROLES[roleKey].account;
+  S.view='dashboard';S.profileId=S.userId;S.profileTab='Overview';S.editMode=false;S.calMonth=10;
+  S.calendarScope=(isBoss()||isManager())?'all':'mine';S.leavePeriod='future';
+  S.claimForm=false;S.employeeForm=false;S.requestOpen=false;S.notifOpen=false;
+  $('#loginScreen').classList.add('hidden');
+  $('#appShell').classList.remove('hidden');
+  render();
+  toast('Welcome back, '+me().first+'! You are signed in as '+ROLES[S.roleKey].label+'.');
+}
+function signOut(){
+  S.authed=false;S.roleKey=null;S.userId=null;S.editMode=false;
+  $('#appShell').classList.add('hidden');$('#loginScreen').classList.remove('hidden');
+  $('#loginEmail').value='';$('#loginPass').value='';$('#loginError').textContent='';
+}
+
+/* ==========================================================================
+   NAVIGATION / SHELL
+   ========================================================================== */
+const NAV=[
+  {k:'dashboard',t:'Dashboard',i:'grid',crumb:'Home / Dashboard'},
+  {k:'attendance',t:'Attendance',i:'clock',crumb:'Workspace / Attendance'},
+  {k:'leave',t:'Leave Application',i:'calendar',crumb:'Workspace / Leave Application',children:[
+    {k:'leave',t:'Leave Overview'},{k:'calendar',t:'Calendar'}]},
+  {k:'claim',t:'Claim',i:'receipt',crumb:'Workspace / Claim'},
+  {k:'directory',t:'Staff Directory',i:'users',crumb:'Core HR / Staff Directory',priv:true},
+  {k:'profile',t:'Staff Profile',i:'user',crumb:'My Account / Staff Profile'}
+];
+function navForRole(){
+  return NAV.filter(n=>!n.priv||canSeeOtherProfiles()).map(n=>{
+    if(n.k==='attendance'&&isBoss())return Object.assign({},n,{t:'Staff Attendance',crumb:'Workspace / Staff Attendance'});
+    if(n.k==='attendance'&&isManager())return Object.assign({},n,{t:'Attendance & Team',crumb:'Workspace / Attendance & Team'});
+    if(n.k==='leave'&&isBoss())return Object.assign({},n,{t:'Leave Requests',crumb:'Workspace / Leave Requests'});
+    if(n.k==='leave'&&isManager())return Object.assign({},n,{t:'Leave & Team Requests',crumb:'Workspace / Leave & Team Requests',children:[{k:'leave',t:'Leave Overview'},{k:'calendar',t:'Calendar'}]});
+    if(n.k==='directory'&&isManager())return Object.assign({},n,{t:'Team Directory',crumb:'Core HR / Team Directory'});
+    if(n.k==='leave')return Object.assign({},n,{children:[{k:'leave',t:'Leave Overview'},{k:'calendar',t:'Calendar'}]});
+    return n;
+  });
+}
+function renderShell(){
+  const nav=navForRole();
+  $('#sidebar').classList.toggle('min',S.sidebarMin);
+  document.body.classList.toggle('sidebar-min',S.sidebarMin);
+  $('#nav').innerHTML='<div class="nav-group">Workspace</div>'+nav.map(n=>{
+    const active=S.view===n.k||(n.k==='leave'&&S.view==='calendar')||(n.k==='directory'&&S.view==='staffProfile');
+    const open=S.subs[n.k]!==false;
+    let h='<div class="nav-item '+(active?'active':'')+'" onclick="go(\''+n.k+'\')">'+ico(n.i)+'<span>'+n.t+'</span>';
+    if(n.children){
+      h+=CARET.replace('class="nav-caret"','class="nav-caret '+(open?'open':'')+'" onclick="event.stopPropagation();toggleSub(\''+n.k+'\')"');
+    }
+    h+='</div>';
+    if(n.children&&open){
+      h+='<div class="nav-sub">'+n.children.map(c=>'<div class="nav-sub-item '+(S.view===c.k?'active':'')+'" onclick="go(\''+c.k+'\')">'+c.t+'</div>').join('')+'</div>';
+    }
+    return h;
+  }).join('');
+  $('#sideUser').innerHTML=avatar(S.userId,'sm')+'<div><div class="name">'+me().first+'</div><div class="role">'+me().role+'</div></div>';
+  const titles={dashboard:'Dashboard',attendance:isBoss()?'Staff Attendance':isManager()?'Attendance & Team':'Attendance',leave:isBoss()?'Leave Requests':isManager()?'Leave & Team Requests':'Leave Application',calendar:'Leave Calendar',claim:'Claim',directory:isManager()?'Team Directory':'Staff Directory',profile:'Staff Profile',staffProfile:'Staff Profile'};
+  $('#topTitle').textContent=titles[S.view]||'Dashboard';
+  $('#topCrumb').textContent=S.view==='staffProfile'?(isManager()?'Core HR / Team Directory / Staff Profile':'Core HR / Staff Directory / Staff Profile'):(S.view==='profile'?'My Account / Staff Profile':(S.view==='calendar'?'Workspace / Leave Application / Calendar':(nav.find(n=>n.k===S.view)||{crumb:'Home / Dashboard'}).crumb));
+  $('#topAvatar').outerHTML='<span id="topAvatar" class="avatar md '+me().roleKey+'">'+initials(me().name)+'</span>';
+  $('#topName').textContent=me().name;
+  updateDarkBtn();
+  renderNotifs();
+}
+function go(v){
+  S.view=v;S.editMode=false;
+  if(v==='profile'){S.profileId=S.userId;S.profileTab='Overview'}
+  render();
+}
+function openMyProfile(){S.profileId=S.userId;S.view='profile';S.profileTab='Overview';S.editMode=false;render()}
+function openProfile(id){S.profileId=id;S.view='staffProfile';S.profileTab='Overview';S.editMode=false;render();window.scrollTo({top:0,behavior:'smooth'})}
+function setProfileTab(t){if(isRestrictedViewer()&&t==='Family & Emergency'){toast('Family & Emergency is restricted to HR and the employee.');return}S.profileTab=t;render()}
+function render(){if(!S.authed)return;renderShell();({dashboard:renderDashboard,attendance:renderAttendance,leave:renderLeave,calendar:renderCalendar,claim:renderClaim,directory:renderDirectory,profile:renderProfile,staffProfile:renderProfile})[S.view]()}
+
+/* ==========================================================================
+   DASHBOARD
+   ========================================================================== */
+function renderDashboard(){
+  const p=me(),h=DEMO_DATE.getHours();
+  const greet=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
+  const dateStr=DEMO_DATE.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const pendingMine=LEAVES.filter(l=>l.staff===S.userId&&l.status==='Pending').length;
+  const pendingAll=LEAVES.filter(l=>l.status==='Pending').length;
+  const teamCount=Object.keys(STAFF).length-1;
+  const pendingTeam=LEAVES.filter(l=>l.staff!==S.userId&&directReportIds().includes(l.staff)&&l.status==='Pending').length;
+  const stripMeta=isBoss()
+    ? '<div><label>Owner ID</label><span>'+p.id+'</span></div><div><label>Entity</label><span>2en Apps Sdn. Bhd.</span></div><div><label>Role</label><span>Company owner</span></div>'
+    : '<div><label>Staff ID</label><span>'+p.id+'</span></div>'+
+      (p.department?'<div><label>Department</label><span>'+p.department+'</span></div>':'')+
+      (p.position?'<div><label>Position</label><span>'+p.position+'</span></div>':'')+
+      (p.manager?'<div><label>Manager</label><span>'+p.manager+'</span></div>':'');
+  const stats=isBoss()
+    ? stat('Team members',teamCount,'users','','Staff, manager &amp; intern to monitor')+
+      stat('Pending leave',pendingAll,'calendar','amber','Requests awaiting your decision')+
+      stat('Present today',teamCount+' / '+teamCount,'check','green','Clock-in performance')+
+      stat('Owner profile',p.completeness+'<small style="font-size:14px">%</small>','user','purple','Profile complete')
+    : stat('Annual Leave',p.leave.annual+' <small style="font-size:13px;color:var(--silver-400)">days left</small>','calendar','','Of '+p.leave.annualTotal+' days entitlement')+
+      stat('Attendance Today',S.clockedIn?'08:32 <small style="font-size:13px;color:var(--silver-400)">AM</small>':'Not clocked in','clock','green',S.clockedIn?'Clocked in · on time':'Tap Attendance to clock in')+
+      stat(isManager()?'Team leave':'Pending Requests',(isManager()?pendingTeam:pendingMine),'receipt','amber',isManager()?pendingTeam+' direct-report request(s) awaiting review':pendingMine+' leave request awaiting review')+
+      stat('Profile Completeness',p.completeness+'<small style="font-size:14px">%</small>','user','purple','Details up to date');
+  const quickItems=isBoss()
+    ? quick('user','Staff Profile','View your owner profile','openMyProfile()')+
+      quick('calendar','Leave Requests','Review &amp; decide staff leave','go(\'leave\')')+
+      quick('clock','Staff Attendance','View attendance &amp; clock history','go(\'attendance\')')+
+      quick('receipt','Claim','View submitted claims','go(\'claim\')')
+    : quick('user','Staff Profile','View your personal &amp; employment info','openMyProfile()')+
+      quick('calendar',isManager()?'Leave &amp; Team':'Leave Application',isManager()?'Balances, team leave &amp; calendar':'Balances, apply leave &amp; calendar','go(\'leave\')')+
+      quick('clock',isManager()?'Attendance &amp; Team':'Attendance',isManager()?'Clock in/out and team attendance':'Clock in/out and your daily records','go(\'attendance\')')+
+      quick('receipt','Claim','Submit and track your claims','go(\'claim\')');
+  $('#mainContent').innerHTML=
+  '<div class="welcome-banner"><div><h2>'+greet+', '+p.first+' 👋</h2><p>Welcome to your 2en Apps workspace. Here is '+((isBoss()||isManager())?'your team\'s':'your')+' snapshot for today.</p></div><div class="date-chip">'+dateStr+'</div></div>'+
+
+  '<div class="user-strip">'+avatar(S.userId,'lg')+
+    '<div class="who"><h3>'+p.name+' '+pill(p.role,roleTone(p.roleKey))+'</h3><p>'+(isBoss()?'Owner account — company owner, not an employee':isManager()?'Team manager — attendance, direct reports and leave approvals':'Your signed-in employee information')+'</p></div>'+
+    '<div class="strip-meta">'+stripMeta+'</div>'+
+    '<button class="btn btn-primary btn-sm" onclick="openMyProfile()">View profile '+ico('arrow')+'</button>'+
+  '</div>'+
+
+  '<div class="grid-4" style="margin-bottom:18px">'+stats+'</div>'+
+
+  '<div class="grid-2">'+
+    '<div class="card"><div class="card-head" style="justify-content:center;text-align:center"><div>'+
+      '<div class="quick-logo"><img src="assets/logo.png" alt="2en Apps Sdn. Bhd."></div>'+
+      '<div class="card-title">Quick access</div><div class="card-sub">Everything you need, one click away</div></div></div>'+
+      '<div class="quick-grid">'+quickItems+'</div>'+
+      (canSeeOtherProfiles()?'<div style="margin-top:16px;border-top:1px solid var(--silver-100);padding-top:14px">'+quick('users','Staff Directory','Open a colleague\'s staff profile','go(\'directory\')')+'</div>':'')+
+    '</div>'+
+    '<div class="card"><div class="card-head"><div><div class="card-title">Recent activity</div><div class="card-sub">Your latest interactions</div></div></div>'+
+      '<div class="activity-list">'+(ACTIVITY[S.userId]||[]).slice(0,4).map(a=>'<div class="activity"><span class="ad"></span><div><b>'+a.a+'</b><p>'+a.d+'</p></div><time>'+a.t+'</time></div>').join('')+'</div>'+
+    '</div>'+
+  '</div>';
+}
+function stat(label,value,icon,tone,note){return '<div class="stat"><div class="stat-top"><div class="stat-label">'+label+'</div><div class="stat-icon '+(tone||'')+'">'+ico(icon)+'</div></div><div class="stat-value">'+value+'</div><div class="stat-note">'+note+'</div></div>'}
+function quick(icon,title,desc,fn){return '<div class="quick" onclick="'+fn+'"><span class="qi">'+ico(icon)+'</span><span><span class="qt">'+title+'</span><span class="qd">'+desc+'</span></span>'+ico('arrow')+'</div>'}
+
+/* ==========================================================================
+   STAFF DETAILS  <<< MAIN FOCUS >>>
+   ========================================================================== */
+function renderProfile(){
+  const p=STAFF[S.profileId],isOwn=S.profileId===S.userId;
+  const fullStat=canStatutoryFull();
+  const limited=isRestrictedViewer();
+  const canEdit=isHR()||isOwn;
+  const tabs=['Overview','Personal','Employment','Family & Emergency','Statutory & Payroll','Documents','Activity'];
+  const visibleTabs=limited?tabs.filter(t=>t!=='Family & Emergency'):tabs;
+  if(limited&&S.profileTab==='Family & Emergency')S.profileTab='Overview';
+
+  let body='';
+  if(S.profileTab==='Overview'){
+    body='<div class="grid-2">'+
+      '<div class="card" style="box-shadow:none"><div class="card-title" style="margin-bottom:16px">Profile at a glance</div><div class="field-grid">'+
+        field('Full name',p.name)+field(p.roleKey==='boss'?'Owner ID':'Staff ID',p.id)+fieldIf('Position',p.position)+fieldIf('Department',p.department)+
+        field('Employment type',p.type)+field('Status',pill(p.status,p.status==='Active'?'green':'amber'))+
+        field('Date joined',p.hire)+field('Work email',p.email)+
+      '</div></div>'+
+      '<div>'+
+        '<div class="card" style="box-shadow:none;margin-bottom:16px"><div class="card-title" style="margin-bottom:12px">Profile completeness</div><div class="completeness"><div class="pct">'+p.completeness+'%</div><div style="flex:1"><div class="muted small">Your information is well maintained.</div><div class="progress"><i style="width:'+p.completeness+'%"></i></div></div></div>'+
+          '<div class="muted tiny" style="margin-top:12px">Missing: 1 professional certificate renewal</div></div>'+
+        '<div class="card" style="box-shadow:none"><div class="card-title" style="margin-bottom:12px">Leave entitlement</div>'+
+          [['Annual leave',p.leave.annual,p.leave.annualTotal],['Emergency leave',p.leave.emergency,p.leave.emergencyTotal],['Work from home',p.leave.wfh,p.leave.wfhTotal]].map(x=>
+          '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>'+x[0]+'</span><span>'+x[1]+' / '+x[2]+' days</span></div><div class="progress"><i style="width:'+Math.round(x[1]/Math.max(x[2],1)*100)+'%"></i></div></div>').join('')+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="section-title">Recent profile activity</div>'+
+      '<div class="activity-list">'+(ACTIVITY[S.profileId]||[]).slice(0,3).map(a=>'<div class="activity"><span class="ad"></span><div><b>'+a.a+'</b><p>'+a.d+'</p></div><time>'+a.t+'</time></div>').join('')+'</div>';
+  }
+
+  if(S.profileTab==='Personal'){
+    const inp=(id,v)=>'<input class="input" id="'+id+'" value="'+v+'">';
+    body=(limited?'<div class="notice">'+ico('info')+'<div>You are viewing a colleague\'s profile in a limited capacity. Family, statutory and payroll details are restricted to HR and the employee.</div></div>':'')+
+    '<div class="section-title">Identity &amp; personal details</div><div class="field-grid">'+
+      field('Full name',p.name)+
+      field('Preferred name',S.editMode?inp('editPreferred',p.preferred||p.first):(p.preferred||'—'))+
+      field('NRIC / Passport',S.editMode?'<span class="field-val" data-f="ic">'+p.ic+'</span>':mask(p.ic,fullStat||isOwn))+
+      field('Date of birth',p.dob)+field('Gender',p.gender)+
+      field('Race',p.race)+field('Religion',p.religion)+
+      field('Nationality',p.nationality)+field('Marital status',p.marital)+
+    '</div>'+
+    '<div class="section-title">Contact &amp; address</div><div class="field-grid">'+
+      field('Mobile number',S.editMode?inp('editPhone',p.phone):p.phone)+
+      field('Home phone',S.editMode?inp('editHomePhone',p.homePhone||'—'):(p.homePhone||'—'))+
+      field('Work email',S.editMode?inp('editEmail',p.email):p.email)+
+      field('Personal email',S.editMode?inp('editPersonalEmail',p.personalEmail||'—'):(p.personalEmail||'—'))+
+      field('Home address',S.editMode?inp('editAddress',p.address):p.address,'full')+
+      field('Mailing address',S.editMode?inp('editMailing',p.mailing||'Same as home address'):(p.mailing||'Same as home address'),'full')+
+    '</div>'+
+    '<div class="muted tiny" style="margin-top:18px">Changes to legal name, NRIC or statutory details must be submitted as a change request and approved by HR (plan.md § UC-05 / UC-06). Changing a work email also updates that account\'s sign-in email in this demo.</div>';
+  }
+
+  if(S.profileTab==='Employment'){
+    body='<div class="section-title">'+(p.roleKey==='boss'?'Ownership details':'Employment details')+'</div><div class="field-grid">'+
+      field(p.roleKey==='boss'?'Owner ID':'Staff ID',p.id)+field(p.roleKey==='boss'?'Relationship':'Employment type',p.type)+
+      field('Status',pill(p.status,p.status==='Active'?'green':'amber'))+
+      fieldIf('Position',p.position)+fieldIf('Job grade',p.grade)+
+      fieldIf('Department',p.department)+fieldIf('Branch',p.branch)+
+      field(p.roleKey==='boss'?'Company established':'Date joined',p.hire)+fieldIf('Confirmation date',p.confirm)+
+      fieldIf('Reporting manager',p.manager)+(p.roleKey==='boss'?'':field('Notice period','30 days'))+
+    '</div>'+
+    '<div class="section-title">Employment timeline</div><div class="timeline">'+
+      p.history.map(h=>'<div class="tl"><time>'+h[1]+'</time><b>'+h[0]+'</b><small>'+h[2]+'</small></div>').join('')+
+    '</div>';
+  }
+
+  if(S.profileTab==='Family & Emergency'){
+    body='<div class="grid-2-even">'+
+      '<div class="card" style="box-shadow:none"><div class="card-title" style="margin-bottom:16px">Next of kin</div><div class="field-grid">'+
+        field('Full name',p.nok)+field('Relationship',p.nokRel)+field('Contact number',p.nokPhone)+fieldIf('Email',p.nokEmail)+field('Dependants',p.dependents)+
+      '</div></div>'+
+      '<div class="card" style="box-shadow:none"><div class="card-title" style="margin-bottom:16px">Emergency contact</div><div class="field-grid">'+
+        field('Full name',S.editMode?'<input class="input" id="editEk" value="'+p.ek+'">':p.ek)+
+        field('Relationship',p.ekRel)+
+        field('Contact number',S.editMode?'<input class="input" id="editEkPhone" value="'+p.ekPhone+'">':p.ekPhone)+
+      '</div></div>'+
+    '</div><div class="notice" style="margin-top:18px">'+ico('info')+'<div>Emergency contact details are visible to the employee and HR only. Boss / line managers cannot see this section.</div></div>';
+  }
+
+  if(S.profileTab==='Statutory & Payroll'){
+    const locked=!fullStat;
+    body=(locked?'<div class="notice">'+ico('lock')+'<div><b>Restricted section.</b> '+(limited?'Salary and statutory identifiers are visible to HR and the employee only.':'Your statutory and salary details are protected under PDPA. Switch to an HR Admin account to view unmasked values.')+'</div></div>':'')+
+      '<div class="section-title">Statutory identifiers</div><div class="field-grid">'+
+        field('EPF (KWSP) member no.',mask(p.epf,fullStat))+
+        field('SOCSO (PERKESO) no.',mask(p.socso,fullStat))+
+        field('LHDN income tax no.',mask(p.tax,fullStat))+
+        field('EIS eligibility',p.roleKey==='intern'?'Not applicable':'Eligible')+
+      '</div>'+
+      '<div class="section-title">Compensation &amp; bank</div><div class="field-grid">'+
+        field('Basic salary / allowance',mask(p.salary,fullStat))+
+        field('Bank account',mask(p.bank,fullStat))+
+        field('Salary type','Monthly')+field('HRD Corp','Registered')+
+      '</div>'+
+      '<div class="muted tiny" style="margin-top:18px">Record retention: EPF ≥ 6 years · SOCSO / LHDN ≥ 7 years · PDPA data minimisation applies (plan.md §3.4).</div>'+
+      (locked&&isOwn?'<div class="edit-actions"><button class="btn btn-sm" onclick="S.requestOpen=!S.requestOpen;render()">'+(S.requestOpen?'Cancel request':'Request an update')+'</button></div>'+(S.requestOpen?'<div class="card" style="margin-top:14px;box-shadow:none"><label class="lbl">Reason for statutory update</label><textarea class="input" id="requestReason" placeholder="Describe the correction required"></textarea><div class="edit-actions"><button class="btn btn-primary btn-sm" onclick="submitChangeRequest()">Submit request</button></div></div>':''):'');
+  }
+
+  if(S.profileTab==='Documents'){
+    body='<div class="card-head"><div><div class="card-title">Employee documents</div><div class="card-sub">Versioned, encrypted and expiry-monitored</div></div>'+(isHR()?'<button class="btn btn-primary btn-sm" onclick="uploadDoc()">+ Upload document</button>':'')+'</div>'+
+      (p.docs.length?'<div class="table-wrap"><table class="data"><thead><tr><th>Document</th><th>Issued by</th><th>Issued</th><th>Expiry</th><th>Status</th><th></th></tr></thead><tbody>'+
+      p.docs.map((d,di)=>'<tr><td><b>'+d[0]+'</b></td><td>'+d[1]+'</td><td>'+d[2]+'</td><td>'+d[3]+'</td><td>'+pill(d[4],d[4]==='Verified'||d[4]==='Valid'||d[4]==='Uploaded'?'green':'amber')+'</td><td><button class="btn btn-sm" title="Download document" onclick="downloadDocument('+di+')">'+ico('download')+'</button></td></tr>').join('')+
+      '</tbody></table></div>':'<div class="muted small">No documents uploaded yet.</div>');
+  }
+
+  if(S.profileTab==='Activity'){
+    body='<div class="card-title" style="margin-bottom:16px">Audit &amp; profile activity</div><div class="activity-list">'+
+      (ACTIVITY[S.profileId]||[]).map(a=>'<div class="activity"><span class="ad"></span><div><b>'+a.a+'</b><p>'+a.d+'</p></div><time>'+a.t+'</time></div>').join('')+
+      '</div><div class="muted tiny" style="margin-top:16px">All views and changes to sensitive fields are recorded in the append-only audit log.</div>';
+  }
+
+  $('#mainContent').innerHTML=
+    (canSeeOtherProfiles()&&!isOwn?'<div style="margin-bottom:14px"><button class="btn btn-sm" onclick="go(\'directory\')">← Back to Staff Directory</button></div>':'')+
+    '<div class="profile-hero">'+
+      '<div class="hero-cover"></div>'+
+      '<div class="hero-body">'+avatar(S.profileId,'xl')+
+        '<div class="hero-main"><h2>'+p.name+' '+pill(p.role,roleTone(p.roleKey))+'</h2>'+
+        '<div class="sub"><span>'+p.id+'</span>'+spanIf(p.position)+spanIf(p.department)+spanIf(p.branch)+'</div></div>'+
+        '<div class="hero-actions">'+
+          (canEdit?'<button class="btn '+(S.editMode?'btn-primary':'')+'" onclick="toggleEdit()">'+ico('pencil')+(S.editMode?'Cancel edit':(isOwn?'Request Change':'Edit Profile'))+'</button>':'')+
+          (S.editMode?'<button class="btn btn-primary" onclick="saveProfile()">'+ico('check')+' Save changes</button>':'')+
+          '<button class="btn" onclick="exportProfile()">'+ico('download')+' Export</button>'+
+          (isOwn?'':'<button class="btn" onclick="openMyProfile()">My Staff Profile</button>')+
+        '</div>'+
+      '</div>'+
+      '<div class="snapshot" style="grid-template-columns:repeat('+(p.roleKey==='boss'?2:4)+',1fr)">'+
+        (p.department?'<div><label>Department</label><span>'+p.department+'</span></div>':'')+
+        (p.position?'<div><label>Position</label><span>'+p.position+'</span></div>':'')+
+        (p.manager?'<div><label>Reporting manager</label><span>'+p.manager+'</span></div>':'')+
+        (p.roleKey==='boss'?'<div><label>Entity</label><span>2en Apps Sdn. Bhd.</span></div>':'')+
+        '<div><label>'+(p.roleKey==='boss'?'Account status':'Employment status')+'</label><span>'+p.status+'</span></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="card"><div class="tabs">'+visibleTabs.map(t=>'<div class="tab '+(S.profileTab===t?'active':'')+'" onclick="setProfileTab(\''+t+'\')">'+t+'</div>').join('')+'</div>'+body+'</div>';
+}
+function field(label,value,full){return '<div class="f '+(full||'')+'"><label>'+label+'</label><div class="val">'+value+'</div></div>'}
+function fieldIf(label,value,full){return (value&&value!=='—'&&value!=='—')?field(label,value,full):''}
+function spanIf(value){return (value&&value!=='—')?'<span>'+value+'</span>':''}
+function mask(value,visible){return visible?'<span>'+value+'</span>':'<span class="locked-val">'+String(value).replace(/[A-Za-z0-9]/g,'•')+'</span>'+ico('lock','lock')}
+function toggleEdit(){S.editMode=!S.editMode;render();if(S.editMode)toast('Edit mode enabled — update the fields below and save.')}
+function saveProfile(){
+  const p=STAFF[S.profileId];
+  const g=id=>$('#'+id)&&$('#'+id).value.trim();
+  const newEmail=g('editEmail');
+  if(newEmail&&newEmail!==p.email&&Object.keys(ROLES).some(k=>ROLES[k].account!==S.profileId&&ROLES[k].email.toLowerCase()===newEmail.toLowerCase())){
+    toast('That work email is already used by another demo account.');return;
+  }
+  const changes=[];
+  ['Preferred name|editPreferred|preferred','Mobile number|editPhone|phone','Home phone|editHomePhone|homePhone','Work email|editEmail|email','Personal email|editPersonalEmail|personalEmail','Home address|editAddress|address','Mailing address|editMailing|mailing','Emergency contact|editEk|ek','Emergency phone|editEkPhone|ekPhone'].map(x=>x.split('|')).forEach(x=>{
+    const v=g(x[1]);if(!v||v===p[x[2]])return;
+    changes.push(x[0]);p[x[2]]=v;
+    if(x[2]==='email'){
+      const rk=Object.keys(ROLES).find(k=>ROLES[k].account===S.profileId);
+      if(rk)ROLES[rk].email=v;
+    }
+  });
+  S.editMode=false;
+  if(changes.length){addActivity(S.profileId,'Profile details updated',changes.join(', '))}
+  render();toast(changes.length?'Saved: '+changes.join(', ')+'. Audit entry recorded.':'No changes detected.');
+}
+function exportProfile(){
+  const p=STAFF[S.profileId];
+  const lines=['2EN APPS HR — STAFF PROFILE EXPORT','====================================','Full name: '+p.name,'Preferred name: '+(p.preferred||'—'),'ID: '+p.id,'Role: '+p.role,p.position?'Position: '+p.position:'',p.department?'Department: '+p.department:'','Work email: '+p.email,'Personal email: '+(p.personalEmail||'—'),'Mobile: '+p.phone,'Home phone: '+(p.homePhone||'—'),'Home address: '+p.address,'Mailing address: '+(p.mailing||'—'),'NRIC / Passport: '+p.ic,'Date of birth: '+p.dob,'Nationality: '+p.nationality,'Status: '+p.status,'Exported: '+TODAY_LABEL,'','This is a prototype export generated locally in the browser.'].filter(Boolean);
+  downloadFile(p.id+'-profile.txt',lines.join('\n'));
+  addActivity(S.profileId,'Profile exported',p.id+' · '+TODAY_LABEL);
+  toast('Profile summary exported. Export recorded in activity.');
+}
+function downloadDocument(di){
+  const p=STAFF[S.profileId],d=p.docs[di];if(!d)return;
+  downloadFile(p.id+'-'+d[0].replace(/[^\w-]+/g,'_')+'.txt','DOCUMENT: '+d[0]+'\nEMPLOYEE: '+p.name+' ('+p.id+')\nISSUED BY: '+d[1]+'\nISSUED: '+d[2]+'\nEXPIRY: '+d[3]+'\nSTATUS: '+d[4]+'\n\nPrototype placeholder — no real file is stored.');
+  addActivity(S.profileId,'Document downloaded',d[0]+' · audit entry recorded');
+  toast('Download of '+d[0]+' logged to audit trail.');
+}
+function uploadDoc(){
+  let inp=$('#docUpload');
+  if(!inp){
+    inp=document.createElement('input');inp.type='file';inp.id='docUpload';inp.className='hidden';
+    inp.onchange=()=>{const f=inp.files&&inp.files[0];if(!f)return;const p=STAFF[S.profileId];p.docs.push([f.name,'Uploaded by '+me().first,TODAY_LABEL,'—','Uploaded']);addActivity(S.profileId,'Document uploaded',f.name);inp.value='';render();toast(f.name+' added to the document list.')};
+    document.body.appendChild(inp);
+  }
+  inp.click();
+}
+function submitChangeRequest(){
+  const t=$('#requestReason');const reason=t&&t.value.trim();
+  if(!reason){toast('Please describe the correction required.');return}
+  addActivity(S.profileId,'Statutory change requested',reason);
+  S.requestOpen=false;render();toast('Change request submitted for HR review.');
+}
+
+/* ==========================================================================
+   LEAVE APPLICATION + CALENDAR
+   ========================================================================== */
+function renderLeave(){
+  const p=me();
+  const calNote='<div class="cal-hint">'+ico('info')+'Approved leave appears on the Leave Calendar immediately. HR Admin, the Owner/Boss and managers can also drag an authorised leave item to a new date when an employee requests a change physically.</div>';
+  if(isBoss()){
+    const all=LEAVES;
+    const list=all.filter(l=>S.leavePeriod==='all'||leavePeriodOf(l).toLowerCase()===S.leavePeriod);
+    $('#mainContent').innerHTML=
+      '<div class="page-head"><div><h1>Leave Requests</h1><p>View and decide staff leave — future, present and past.</p></div>'+
+        '<div class="seg">'+[['future','Future'],['present','Present'],['past','Past'],['all','All']].map(x=>'<button class="'+(S.leavePeriod===x[0]?'active':'')+'" onclick="S.leavePeriod=\''+x[0]+'\';render()">'+x[1]+'</button>').join('')+'</div></div>'+
+      '<div class="grid-4" style="margin-bottom:18px">'+
+        stat('Total requests',all.length,'calendar','','All staff leave records')+
+        stat('Pending',all.filter(l=>l.status==='Pending').length,'clock','amber','Awaiting your decision')+
+        stat('Approved',all.filter(l=>l.status==='Approved').length,'check','green','Already on the calendar')+
+        stat('Rejected',all.filter(l=>l.status==='Rejected').length,'lock','purple','Declined requests')+
+      '</div>'+
+      '<div class="card"><div class="card-head"><div><div class="card-title">'+S.leavePeriod.charAt(0).toUpperCase()+S.leavePeriod.slice(1)+' leave requests</div><div class="card-sub">Owner view · approve or reject; the calendar updates instantly</div></div>'+
+        '<button class="btn btn-sm" onclick="go(\'calendar\')">Open calendar '+ico('arrow')+'</button></div>'+
+        leaveTable(list,true,true)+'</div>'+calNote;
+    return;
+  }
+  const reviewing=isHR()||isManager();
+  const reviewList=isHR()?LEAVES:(isManager()?LEAVES.filter(l=>l.staff!==S.userId&&directReportIds().includes(l.staff)):LEAVES.filter(l=>l.staff===S.userId));
+  $('#mainContent').innerHTML=
+    '<div class="page-head"><div><h1>'+(isManager()?'Leave &amp; Team Requests':'Leave Application')+'</h1><p>'+(isManager()?'Your leave balances plus direct-report requests to decide.':'Your leave balances, applications and team calendar.')+'</p></div>'+
+      '<div class="seg"><button class="'+(S.view==='leave'?'active':'')+'" onclick="go(\'leave\')">Leave Overview</button><button class="'+(S.view==='calendar'?'active':'')+'" onclick="go(\'calendar\')">Calendar</button></div></div>'+
+    '<div class="grid-3" style="margin-bottom:18px">'+
+      leaveCard('Annual Leave',p.leave.annual,p.leave.annualTotal,'calendar','')+
+      leaveCard('Emergency Leave',p.leave.emergency,p.leave.emergencyTotal,'receipt','emergency')+
+      leaveCard('Work From Home',p.leave.wfh,p.leave.wfhTotal,'clock','wfh')+
+    '</div>'+
+    '<div class="grid-2">'+
+      '<div class="card"><div class="card-head"><div><div class="card-title">Apply for leave</div><div class="card-sub">Submit a request for HR approval</div></div></div>'+
+        '<div class="form-grid">'+
+          '<div><label class="lbl">Leave type</label><select class="input" id="leaveType">'+Object.keys(LEAVE_KEY).map(t=>{const bal=p.leave[LEAVE_KEY[t]];return '<option value="'+t+'" data-balance="'+bal+'"'+(bal<=0?' disabled':'')+'>'+t+(bal<=0?' (no balance)':'')+'</option>'}).join('')+'</select></div>'+
+          '<div><label class="lbl">Reason</label><input class="input" id="leaveReason" placeholder="e.g. Family event"></div>'+
+          '<div><label class="lbl">Start date</label><input class="input" id="leaveStart" type="date" value="2026-11-23"></div>'+
+          '<div><label class="lbl">End date</label><input class="input" id="leaveEnd" type="date" value="2026-11-23"></div>'+
+        '</div><div class="edit-actions"><button class="btn btn-primary" onclick="submitLeave()">Submit application</button><button class="btn" onclick="go(\'calendar\')">View calendar</button></div>'+
+      '</div>'+
+      '<div class="card"><div class="card-head"><div><div class="card-title">'+(isHR()?'All leave requests':isManager()?'Direct-report requests':'My applications')+'</div><div class="card-sub">'+(isHR()?'Approve requests — calendar updates on approval':isManager()?'Decide leave for Aina and Arif; own requests are not listed here':'Latest submissions and approval status')+'</div></div></div>'+
+        leaveTable(reviewList,reviewing,reviewing)+
+      '</div>'+
+    '</div>'+calNote;
+}
+function leaveCard(title,num,total,icon,tone){
+  return '<div class="leave-card '+tone+'"><div class="lc-top"><div><div class="card-sub">'+title+'</div><div class="lc-num">'+num+' <small>/ '+total+' days</small></div></div><div class="lc-icon">'+ico(icon)+'</div></div><div class="progress"><i style="width:'+Math.round(num/Math.max(total,1)*100)+'%"></i></div></div>'
+}
+function leavePeriodOf(l){return l.start>TODAY?'Future':(l.end<TODAY?'Past':'Present')}
+function leaveTable(list,showEmp,actions){
+  const cols=actions?5:4;
+  return '<div class="table-wrap"><table class="data"><thead><tr><th>'+(showEmp?'Employee':'Type')+'</th><th>Date</th><th>Period</th><th>Status</th>'+(actions?'<th>Decision</th>':'')+'</tr></thead><tbody>'+
+    (list.length?list.map(l=>{
+      const per=leavePeriodOf(l);
+      return '<tr><td><b>'+(showEmp?STAFF[l.staff].name:l.type)+'</b><small style="display:block;color:var(--silver-500);font-size:10px">'+(showEmp?l.type+' · '+STAFF[l.staff].id:l.reason)+'</small></td>'+
+        '<td>'+l.start+' → '+l.end+'</td>'+
+        '<td>'+pill(per,per==='Future'?'blue':per==='Present'?'green':'silver')+'</td>'+
+        '<td>'+pill(l.status,l.status==='Approved'?'green':l.status==='Pending'?'amber':'red')+'</td>'+
+        (actions?'<td>'+(l.status==='Pending'?'<button class="btn btn-sm btn-primary" onclick="approveLeave('+l.id+')">Approve</button> <button class="btn btn-sm" onclick="rejectLeave('+l.id+')">Reject</button>':'<span class="muted tiny">Decided</span>')+'</td>':'')+
+      '</tr>';
+    }).join(''):'<tr><td colspan="'+cols+'" class="muted">No requests in this period.</td></tr>')+
+    '</tbody></table></div>';
+}
+function findLeave(id){return LEAVES.find(l=>l.id===id)}
+function approveLeave(id){
+  const l=findLeave(id);if(!l)return;
+  if(!canDecideLeave(l)){toast('You can only decide leave for your direct reports.');return}
+  l.status='Approved';
+  addActivity(l.staff,'Leave approved by '+(isBoss()?'owner':isManager()?'manager':'HR Admin'),l.type+' · '+l.start+' → '+l.end);
+  addActivity(S.userId,'Leave request approved',STAFF[l.staff].name+' · '+l.type);
+  render();toast('Leave approved — calendar updated for '+STAFF[l.staff].first+'.');
+}
+function rejectLeave(id){
+  const l=findLeave(id);if(!l)return;
+  if(!canDecideLeave(l)){toast('You can only decide leave for your direct reports.');return}
+  l.status='Rejected';
+  addActivity(l.staff,'Leave request rejected',l.type+' · '+l.start+' → '+l.end);
+  addActivity(S.userId,'Leave request rejected',STAFF[l.staff].name+' · '+l.type);
+  render();toast('Leave request rejected.');
+}
+function submitLeave(){
+  const sel=$('#leaveType'),type=sel.value,start=$('#leaveStart').value,end=$('#leaveEnd').value,reason=$('#leaveReason').value.trim();
+  const avail=Number(sel.selectedOptions[0]?.dataset.balance||0);
+  if(!start||!end){toast('Please choose start and end dates.');return}
+  if(end<start){toast('End date must be on or after the start date.');return}
+  const days=Math.max(1,Math.round((new Date(end+'T00:00:00')-new Date(start+'T00:00:00'))/86400000)+1);
+  if(days>avail){toast('Not enough '+type+' balance. Available: '+avail+' day(s).');return}
+  LEAVES.unshift({id:Date.now(),staff:S.userId,type:type,start:start,end:end,days:days,reason:reason||'—',status:'Pending'});
+  me().leave[LEAVE_KEY[type]]-=days;
+  addActivity(S.userId,'Leave application submitted',type+' · '+start+' → '+end);
+  render();toast('Leave application submitted for approval. Balance updated.');
+}
+
+/* ==========================================================================
+   CALENDAR
+   ========================================================================== */
+function calendarVisible(l){
+  if(S.calendarScope==='mine')return l.staff===S.userId;
+  if(isManager())return directReportIds().includes(l.staff);
+  return true;
+}
+function renderCalendar(){
+  if(isBoss()||isManager())S.calendarScope='all';
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const year=2026,month=S.calMonth;
+  const firstDow=(new Date(year,month,1).getDay()+6)%7;
+  const daysIn=new Date(year,month+1,0).getDate();
+  const holidays=HOLIDAYS.filter(h=>h.date.startsWith('2026-'+String(month+1).padStart(2,'0')));
+  let cells='';
+  for(let i=0;i<firstDow;i++)cells+='<div class="cal-cell blank"></div>';
+  for(let d=1;d<=daysIn;d++){
+    const key='2026-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    const hol=holidays.find(h=>h.date===key);
+    const leaves=LEAVES.filter(l=>l.status==='Approved'&&key>=l.start&&key<=l.end&&calendarVisible(l));
+    const isToday=key===TODAY;
+    const drop=isPriv()?' ondragover="allowDrop(event)" ondragleave="this.classList.remove(\'drop-target\')" ondrop="dropLeave(event,\''+key+'\')"':'';
+    cells+='<div class="cal-cell '+(isToday?'today':'')+'" data-date="'+key+'"'+drop+'><div class="cal-day">'+d+'</div>'+
+      (hol?'<div class="cal-event ev-holiday">'+hol.name+'</div>':'')+
+      leaves.map(l=>{
+        const mine=l.staff===S.userId;
+        const cls=l.type==='Annual Leave'?'ev-annual':l.type==='Emergency Leave'?'ev-emergency':'ev-wfh';
+        const drag=canDecideLeave(l)?' draggable="true" ondragstart="startDrag(event,'+l.id+')" title="Drag to change date"':'';
+        return '<div class="cal-event '+(S.calendarScope==='all'&&!mine?'ev-team':cls)+'"'+drag+'>'+(S.calendarScope==='all'?STAFF[l.staff].first+' · ':'')+l.type.replace(' Leave','')+'</div>'
+      }).join('')+'</div>';
+  }
+  $('#mainContent').innerHTML=
+    '<div class="page-head"><div><h1>Leave Calendar</h1><p>Public holidays and approved leave in one shared view.</p></div>'+
+      (isBoss()?'<span class="pill purple">All staff leave · drag to reschedule</span>':isManager()?'<span class="pill teal">Your team leave · drag to reschedule</span>':isHR()?'<div class="seg"><button class="'+(S.calendarScope==='mine'?'active':'')+'" onclick="S.calendarScope=\'mine\';render()">My leave</button><button class="'+(S.calendarScope==='all'?'active':'')+'" onclick="S.calendarScope=\'all\';render()">All staff leave</button></div>':'<span class="pill blue">Your leave + public holidays</span>')+'</div>'+
+    '<div class="card">'+
+      '<div class="cal-toolbar"><div class="cal-nav"><button onclick="S.calMonth='+Math.max(0,S.calMonth-1)+';render()">‹</button><h3>'+months[month]+' '+year+'</h3><button onclick="S.calMonth='+Math.min(11,S.calMonth+1)+';render()">›</button><button style="width:auto;padding:0 12px;font-size:11px" onclick="S.calMonth=10;render()">Today</button></div>'+
+      '<div class="legend"><span><i style="background:var(--danger)"></i>Public holiday</span><span><i style="background:var(--royal-500)"></i>Annual leave</span><span><i style="background:var(--warning)"></i>Emergency</span><span><i style="background:var(--purple)"></i>WFH</span>'+(S.calendarScope==='all'?'<span><i style="background:var(--teal)"></i>'+(isManager()?'Direct reports':'Other staff')+'</span>':'')+'</div></div>'+
+      (isPriv()?'<div class="cal-hint">'+ico('pencil')+'Drag an approved leave item onto another day to record a physical date-change request. HR Admin / Owner decide all leave; managers decide direct reports only.</div>':'')+
+      '<div class="calendar-grid">'+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>'<div class="cal-dow">'+d+'</div>').join('')+cells+'</div>'+
+      '<div class="muted tiny" style="margin-top:12px">Public holidays shown are illustrative for Malaysia. Approving a request instantly adds it here.</div>'+
+    '</div>';
+}
+let draggingLeave=null;
+function startDrag(e,id){draggingLeave=id;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',String(id))}
+function allowDrop(e){e.preventDefault();e.currentTarget.classList.add('drop-target')}
+function dropLeave(e,date){
+  e.preventDefault();e.currentTarget.classList.remove('drop-target');
+  const id=Number(e.dataTransfer.getData('text/plain')||draggingLeave);
+  const l=findLeave(id);draggingLeave=null;
+  if(!l)return;
+  if(!canDecideLeave(l)){toast('You can only reschedule leave for your direct reports.');return}
+  const nd=new Date(date+'T00:00:00');nd.setDate(nd.getDate()+Math.max(0,l.days-1));
+  const newEnd=isoDate(nd);
+  if(l.start===date&&l.end===newEnd){toast('Leave is already on '+date);return}
+  const old=l.start+' → '+l.end,now=date+' → '+newEnd;
+  l.start=date;l.end=newEnd;
+  addActivity(l.staff,'Leave date changed physically',old+' → '+now+' (by '+ROLES[S.roleKey].label+')');
+  addActivity(S.userId,'Leave item moved on calendar',STAFF[l.staff].name+' · '+old+' → '+now);
+  render();toast('Leave moved to '+now+' — calendar updated.');
+}
+
+/* ==========================================================================
+   ATTENDANCE & CLAIM (supporting sections — lighter mockups)
+   ========================================================================== */
+function renderAttendance(){
+  if(isBoss()){
+    const team=[['aina','08:32','—','8.5 so far','On time','Good'],['siti','08:28','17:10','8.7','On time','Excellent'],['manager','08:20','—','8.9 so far','On time','Excellent'],['arif','09:12','—','6.2 so far','Late','Needs attention']];
+    $('#mainContent').innerHTML=
+      '<div class="page-head"><div><h1>Staff Attendance</h1><p>View employee clock-in and clock history for performance monitoring. The owner has no personal clock-in.</p></div>'+pill('Today · '+TODAY_LABEL,'blue')+'</div>'+
+      '<div class="grid-4" style="margin-bottom:18px">'+
+        stat('Team members',team.length,'users','','Manager, staff &amp; intern')+
+        stat('Present today',team.length+' / '+team.length,'check','green','Clocked in')+
+        stat('Late today',team.filter(r=>r[4]==='Late').length,'clock','amber','Arrived after 09:00')+
+        stat('Avg. hours','8.1','calendar','purple','This week')+
+      '</div>'+
+      '<div class="card" style="margin-bottom:18px"><div class="card-head"><div><div class="card-title">Today\'s clock-in</div><div class="card-sub">Read-only owner view · no clock-in button</div></div>'+pill('Live','green')+'</div>'+
+        '<div class="table-wrap"><table class="data"><thead><tr><th>Employee</th><th>ID</th><th>Clock in</th><th>Clock out</th><th>Hours</th><th>Status</th><th>Performance</th></tr></thead><tbody>'+
+        team.map(r=>'<tr><td><div class="person-cell">'+avatar(r[0],'sm')+'<div><b>'+STAFF[r[0]].name+'</b><small>'+STAFF[r[0]].position+'</small></div></div></td><td><code>'+STAFF[r[0]].id+'</code></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+pill(r[4],r[4]==='On time'?'green':'amber')+'</td><td>'+pill(r[5],r[5]==='Excellent'?'green':r[5]==='Good'?'blue':'red')+'</td></tr>').join('')+
+        '</tbody></table></div></div>'+
+      '<div class="card"><div class="card-head"><div><div class="card-title">Clock history — past 7 days</div><div class="card-sub">Attendance records used for performance review</div></div></div>'+
+        '<div class="table-wrap"><table class="data"><thead><tr><th>Employee</th><th>17 Nov</th><th>16 Nov</th><th>13 Nov</th><th>12 Nov</th><th>Attendance rate</th></tr></thead><tbody>'+
+        [['aina','08:28 / 17:10','08:41 / 17:02','08:35 / 17:20','08:30 / 17:05','98%'],['siti','08:15 / 17:30','08:22 / 17:12','08:40 / 17:18','08:18 / 17:22','100%'],['manager','08:12 / 17:25','08:26 / 17:18','08:19 / 17:22','08:31 / 17:14','99%'],['arif','09:05 / 17:02','09:18 / 17:15','08:55 / 17:30','09:22 / 17:10','88%']].map(r=>'<tr><td><b>'+STAFF[r[0]].name+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td>'+pill(r[5],parseInt(r[5])>=95?'green':parseInt(r[5])>=90?'amber':'red')+'</td></tr>').join('')+
+        '</tbody></table></div></div>';
+    return;
+  }
+  const p=me();
+  const teamAttendance=isManager()?'<div class="card" style="margin-top:18px"><div class="card-head"><div><div class="card-title">Direct-report attendance</div><div class="card-sub">Read-only team view · clock history for performance monitoring</div></div>'+pill('Live','green')+'</div>'+
+    '<div class="table-wrap"><table class="data"><thead><tr><th>Employee</th><th>Clock in</th><th>Clock out</th><th>Status</th></tr></thead><tbody>'+
+    [['aina','08:32','—','On time'],['arif','09:12','—','Late']].map(r=>'<tr><td><div class="person-cell">'+avatar(r[0],'sm')+'<div><b>'+STAFF[r[0]].name+'</b><small>'+STAFF[r[0]].position+'</small></div></div></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+pill(r[3],r[3]==='On time'?'green':'amber')+'</td></tr>').join('')+
+    '</tbody></table></div></div>':'';
+  $('#mainContent').innerHTML='<div class="page-head"><div><h1>Attendance</h1><p>Your clock-in status and recent attendance records.</p></div>'+pill('Today · '+TODAY_LABEL,'blue')+'</div>'+
+  '<div class="grid-2">'+
+    '<div class="card"><div class="card-head"><div><div class="card-title">Today\'s attendance</div><div class="card-sub">'+p.name+' · '+p.id+'</div></div>'+pill(S.clockedIn?'Clocked in':'Not clocked in',S.clockedIn?'green':'amber')+'</div>'+
+      '<div style="display:flex;gap:28px;margin:8px 0 22px"><div><div class="card-sub">Clock in</div><div class="big-time">08:32</div></div><div><div class="card-sub">Clock out</div><div class="big-time">'+(S.clockedIn?'— —':'17:06')+'</div></div><div><div class="card-sub">Hours today</div><div class="big-time">'+(S.clockedIn?'8.5':'—')+'</div></div></div>'+
+      '<button class="clock-btn" onclick="S.clockedIn=!S.clockedIn;render();toast(S.clockedIn?\'Clocked in successfully\':\'Clocked out successfully\')">'+(S.clockedIn?'Clock Out now':'Clock In now')+'</button>'+
+    '</div>'+
+    '<div class="card"><div class="card-head"><div><div class="card-title">This week</div><div class="card-sub">Hours logged per day</div></div></div>'+
+      '<div class="bars">'+[['M',7.5],['T',8.5],['W',8],['T',9],['F',8.5],['S',0],['S',0]].map(x=>'<div class="bar-wrap"><span class="bar" style="height:'+(x[1]/9*100)+'%"></span><small>'+x[0]+'</small></div>').join('')+'</div>'+
+      '<div class="muted tiny" style="margin-top:10px">Total: 41.5 hours · Target: 40 hours</div>'+
+    '</div>'+
+  '</div>'+
+  teamAttendance+
+  '<div class="card" style="margin-top:18px"><div class="card-title" style="margin-bottom:12px">Recent records</div><div class="table-wrap"><table class="data"><thead><tr><th>Date</th><th>Clock in</th><th>Clock out</th><th>Hours</th><th>Status</th></tr></thead><tbody>'+
+    [[TODAY_LABEL,'08:32','—','—','In progress'],['17 Nov 2026','08:28','17:10','8.7','Present'],['16 Nov 2026','08:41','17:02','8.3','Present'],['13 Nov 2026','08:35','17:20','8.8','Present']].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+pill(r[4],r[4]==='Present'?'green':'amber')+'</td></tr>').join('')+
+  '</tbody></table></div></div>';
+}
+let CLAIMS=[
+  {id:'CLM-1024',date:'15 Nov 2026',cat:'Transport',amount:'85.00',reason:'Client visit',status:'Approved'},
+  {id:'CLM-1023',date:'08 Nov 2026',cat:'Meals',amount:'42.50',reason:'Team meeting',status:'Reimbursed'},
+  {id:'CLM-1022',date:'02 Nov 2026',cat:'Software',amount:'199.00',reason:'Design licence',status:'Pending'}
+];
+function renderClaim(){
+  const form=(S.claimForm&&!isBoss())?'<div class="card" style="margin-bottom:18px"><div class="card-head"><div><div class="card-title">New claim</div><div class="card-sub">Enter the expense details — saved to this demo session</div></div></div>'+
+    '<div class="form-grid">'+
+      '<div><label class="lbl">Category</label><select class="input" id="claimCat"><option>Transport</option><option>Meals</option><option>Software</option><option>Other</option></select></div>'+
+      '<div><label class="lbl">Amount (RM)</label><input class="input" id="claimAmount" type="number" min="0.01" step="0.01" placeholder="0.00"></div>'+
+      '<div><label class="lbl">Date</label><input class="input" id="claimDate" type="date" value="'+TODAY+'"></div>'+
+      '<div><label class="lbl">Reason</label><input class="input" id="claimReason" placeholder="e.g. Client visit"></div>'+
+    '</div><div class="edit-actions"><button class="btn btn-primary" onclick="submitClaim()">Submit claim</button><button class="btn" onclick="S.claimForm=false;render()">Cancel</button></div></div>':'';
+  $('#mainContent').innerHTML='<div class="page-head"><div><h1>Claim</h1><p>'+(isBoss()?'View submitted claims (read-only owner view).':'Submit and track your expense claims.')+'</p></div>'+(isBoss()?'':(S.claimForm?'<button class="btn" onclick="S.claimForm=false;render()">Close form</button>':'<button class="btn btn-primary" onclick="S.claimForm=true;render()">+ New claim</button>'))+'</div>'+form+
+  '<div class="grid-3" style="margin-bottom:18px">'+
+    stat('Submitted',String(CLAIMS.length),'receipt','','Total this month')+
+    stat('Pending',String(CLAIMS.filter(c=>c.status==='Pending').length),'clock','amber','Awaiting approval')+
+    stat('Reimbursed','RM '+CLAIMS.filter(c=>c.status==='Reimbursed').reduce((s,c)=>s+parseFloat(c.amount.replace(/[^\d.]/g,'')),0).toFixed(2),'check','green','Paid in November')+
+  '</div>'+
+  '<div class="card"><div class="card-title" style="margin-bottom:12px">'+(isBoss()?'Claims overview':'My claims')+'</div><div class="table-wrap"><table class="data"><thead><tr><th>Claim ID</th><th>Date</th><th>Category</th><th>Amount</th><th>Status</th></tr></thead><tbody>'+
+    CLAIMS.map(c=>'<tr><td><code>'+c.id+'</code></td><td>'+c.date+'</td><td>'+c.cat+(c.reason?'<small style="display:block;color:var(--silver-500);font-size:10px">'+c.reason+'</small>':'')+'</td><td><b>RM '+c.amount+'</b></td><td>'+pill(c.status,c.status==='Reimbursed'?'green':c.status==='Approved'?'blue':'amber')+'</td></tr>').join('')+
+  '</tbody></table></div></div>';
+}
+function submitClaim(){
+  const cat=$('#claimCat').value,amount=parseFloat($('#claimAmount').value),date=$('#claimDate').value,reason=$('#claimReason').value.trim();
+  if(!(amount>0)){toast('Please enter an amount greater than RM 0.');return}
+  if(!date){toast('Please choose a claim date.');return}
+  CLAIMS.unshift({id:'CLM-'+(1025+CLAIMS.length),date:displayDate(date),cat:cat,amount:amount.toFixed(2),reason:reason||'—',status:'Pending'});
+  addActivity(S.userId,'Claim submitted',cat+' · RM '+amount.toFixed(2));
+  S.claimForm=false;render();toast('Claim submitted for approval.');
+}
+
+/* ==========================================================================
+   STAFF DIRECTORY (HR / BOSS)
+   ========================================================================== */
+function renderDirectory(){
+  const list=Object.keys(STAFF).filter(id=>id!==S.userId&&(isManager()?STAFF[id].manager===me().name:true));
+  const form=S.employeeForm&&isHR()?'<div class="card" style="margin-bottom:18px"><div class="card-head"><div><div class="card-title">Add employee</div><div class="card-sub">Creates a starter profile that HR can complete</div></div></div>'+
+    '<div class="form-grid">'+
+      '<div><label class="lbl">Full name</label><input class="input" id="newName" placeholder="e.g. Nur Aisyah Binti Ahmad"></div>'+
+      '<div><label class="lbl">Work email</label><input class="input" id="newEmail" type="email" placeholder="name@2enapps.my"></div>'+
+      '<div><label class="lbl">Position</label><input class="input" id="newPosition" placeholder="e.g. Executive"></div>'+
+      '<div><label class="lbl">Department</label><input class="input" id="newDepartment" placeholder="e.g. Operations"></div>'+
+    '</div><div class="edit-actions"><button class="btn btn-primary" onclick="addEmployee()">Create profile</button><button class="btn" onclick="S.employeeForm=false;render()">Cancel</button></div></div>':'';
+  $('#mainContent').innerHTML='<div class="page-head"><div><h1>'+(isManager()?'Team Directory':'Staff Directory')+'</h1><p>'+(isBoss()?'All staff, manager &amp; intern':isManager()?'Your direct reports':'All employee profiles')+' · click a row to open a separate Staff Profile page (never your own profile).</p></div>'+(isHR()?(S.employeeForm?'<button class="btn" onclick="S.employeeForm=false;render()">Close form</button>':'<button class="btn btn-primary" onclick="S.employeeForm=true;render()">+ Add employee</button>'):'')+'</div>'+form+
+  '<div class="card"><div class="table-wrap"><table class="data"><thead><tr><th>Employee</th><th>Staff ID</th><th>Position</th><th>Department</th><th>Status</th><th></th></tr></thead><tbody>'+
+    list.map(id=>{const p=STAFF[id];return '<tr class="clickable" onclick="openProfile(\''+id+'\')"><td><div class="person-cell">'+avatar(id,'sm')+'<div><b>'+p.name+'</b><small>'+p.email+'</small></div></div></td><td><code>'+p.id+'</code></td><td>'+(p.position||'<span class="muted">Not applicable</span>')+'</td><td>'+(p.department||'<span class="muted">Owner entity</span>')+'</td><td>'+pill(p.status,p.status==='Active'?'green':'amber')+'</td><td>'+ico('arrow')+'</td></tr>'}).join('')+
+  '</tbody></table></div></div>';
+}
+function addEmployee(){
+  const name=$('#newName').value.trim(),email=$('#newEmail').value.trim(),position=$('#newPosition').value.trim(),department=$('#newDepartment').value.trim();
+  if(!name||!email||!position||!department){toast('Please complete all four fields.');return}
+  if(!/^\S+@\S+\.\S+$/.test(email)){toast('Please enter a valid work email.');return}
+  const parts=name.split(/\s+/),id='EMP-2026-'+String(100+Object.keys(STAFF).length).padStart(4,'0');
+  STAFF[id]={id:id,name:name,first:parts[0],last:parts.slice(1).join(' ')||'—',role:'Staff',roleKey:'staff',position:position,grade:'E1',department:department,branch:'Cyberjaya',manager:'Lim Wei Jian',status:'Active',type:'Permanent',hire:TODAY_LABEL,confirm:'—',dob:'—',gender:'—',race:'—',religion:'—',nationality:'Malaysian',marital:'—',ic:'—',phone:'—',email:email,preferred:parts[0],homePhone:'—',personalEmail:'—',address:'—',mailing:'Same as home address',nok:'—',nokRel:'—',nokPhone:'—',nokEmail:'—',ek:'—',ekRel:'—',ekPhone:'—',dependents:'—',salary:'—',bank:'—',epf:'—',socso:'—',tax:'—',leave:{annual:14,emergency:5,wfh:8,annualTotal:18,emergencyTotal:7,wfhTotal:12},docs:[['IC','Pending upload','—','—','Pending']],history:[['Onboarded',TODAY_LABEL,'Starter profile created by HR']],completeness:45};
+  ACTIVITY[id]=[{a:'Profile created',d:'Starter profile by '+me().first,t:'Just now'}];
+  addActivity(S.userId,'Employee profile created',name+' · '+id);
+  S.employeeForm=false;render();toast(name+' added to the directory as '+id+'.');
+}
+</script>
+</body>
+</html>
